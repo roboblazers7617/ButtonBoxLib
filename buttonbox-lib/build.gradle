@@ -24,6 +24,8 @@ nativeConfig.dependencies.add wpilibTools.deps.wpilib("cscore")
 nativeConfig.dependencies.add wpilibTools.deps.wpilibOpenCv("frc" + wpi.frcYear.get(), wpi.versions.opencvVersion.get())
 
 dependencies {
+	implementation wpilibTools.deps.wpilibJava("wpilibNewCommands")
+	implementation wpilibTools.deps.wpilibJava("wpilibj")
 	implementation wpilibTools.deps.wpilibJava("wpiutil")
 	implementation wpilibTools.deps.wpilibJava("wpimath")
 	implementation wpilibTools.deps.wpilibJava("wpinet")
