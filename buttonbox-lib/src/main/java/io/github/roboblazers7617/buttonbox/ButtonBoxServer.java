@@ -9,19 +9,12 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  * Class for robot-side ButtonBox logic.
  */
 public class ButtonBoxServer extends SubsystemBase {
-	private final DoublePublisher valuePub;
-	private double value = 0;
+	private final Control testControl;
 
 	/** Creates a new ButtonBoxServer. */
 	public ButtonBoxServer() {
 		NetworkTableInstance inst = NetworkTableInstance.getDefault();
 		NetworkTable table = inst.getTable("ButtonBox");
-		valuePub = table.getDoubleTopic("value").publish();
-	}
-
-	@Override
-	public void periodic() {
-		value += 0.01;
-		valuePub.set(value);
+		testControl = new Control(table);
 	}
 }
