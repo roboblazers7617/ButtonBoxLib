@@ -8,3 +8,4 @@ pluginManagement {
 
 rootProject.name = 'buttonbox'
 include 'buttonbox-lib'
+include 'buttonbox-bridge'
