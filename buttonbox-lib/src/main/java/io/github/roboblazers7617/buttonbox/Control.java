@@ -11,16 +11,27 @@ public class Control {
 	/** Creates a new Control. */
 	public Control() {}
 
-	/** Updates the control's state. This doesn't do anything by default, and should be overridden by the class inheritting this. */
-	public void update() {}
+	/**
+	 * Updates the control's state on the server.
+	 * <p>
+	 * This doesn't do anything by default, and should be overridden by the class inheritting this.
+	 */
+	public void updateServer() {}
+
+	/**
+	 * Updates the control's state on the client. This should have logic in it that polls the hardware's state and sends it to the server.
+	 * <p>
+	 * This doesn't do anything by default, and should be overridden by the class inheritting this.
+	 */
+	public void updateClient() {}
 
 	/**
 	 * Called by the Control class when the NetworkTable is set. Not intended to be called outside of the class.
-	 *
+	 * <p>
 	 * This should create all of the NetworkTables publishers and subscribers for the inheritting class.
 	 *
 	 * @param table
-	 * 	{@link edu.wpi.first.networktables.NetworkTable}
+	 *                {@link edu.wpi.first.networktables.NetworkTable}
 	 */
 	public void setupNetworkTables(NetworkTable table) {}
 

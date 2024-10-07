@@ -1,37 +1,34 @@
 package io.github.roboblazers7617.buttonbox;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
 import java.util.ArrayList;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 /**
- * Class for robot-side ButtonBox logic.
+ * Class for client-side ButtonBox logic.
  */
-public class ButtonBoxServer extends SubsystemBase {
+public class ButtonBoxClient {
 	private ArrayList<Control> controls = new ArrayList<Control>();
 	private final NetworkTable table;
 
-	/** Creates a new ButtonBoxServer. */
-	public ButtonBoxServer() {
-		NetworkTableInstance inst = NetworkTableInstance.getDefault();
+	/** Creates a new ButtonBoxClient. */
+	public ButtonBoxClient(NetworkTableInstance inst) {
 		table = inst.getTable("ButtonBox");
 	}
 
-	@Override
+	/** Should be called regularly to update the state of the Controls. */
 	public void periodic() {
 		for (Control control : controls) {
-			control.updateServer();
+			control.updateClient();
 		}
 	}
 
 	/**
-	 * Adds a control to the ButtonBoxServer.
+	 * Adds a control to the ButtonBoxClient.
 	 *
 	 * @param control
-	 *                The {@link io.github.roboblazers7617.buttonbox.Control} to add to the server.
+	 *                The {@link io.github.roboblazers7617.buttonbox.Control} to add to the client.
 	 */
 	public void addControl(Control control) {
 		control.setTable(table);

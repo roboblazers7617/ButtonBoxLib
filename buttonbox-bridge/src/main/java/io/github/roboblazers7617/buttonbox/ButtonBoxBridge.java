@@ -17,6 +17,9 @@ import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.DoubleSubscriber;
 
+import io.github.roboblazers7617.buttonbox.ButtonBoxClient;
+import io.github.roboblazers7617.buttonbox.controls.TestControl;
+
 /**
  * Bridge program to connect the ButtonBox hardware to NetworkTables.
  */
@@ -37,11 +40,11 @@ public class ButtonBoxBridge {
 
 	public void run() {
 		NetworkTableInstance inst = NetworkTableInstance.getDefault();
-		NetworkTable table = inst.getTable("ButtonBox");
-		DoubleSubscriber xSub = table.getDoubleTopic("value").subscribe(0.0);
 		inst.startClient4("ButtonBox Bridge");
 		inst.setServer("localhost"); // where TEAM=190, 294, etc, or use inst.setServer("hostname") or similar
 		inst.startDSClient(); // recommended if running on DS computer; this gets the robot IP from the DS
+		ButtonBoxClient client = new ButtonBoxClient(inst);
+		client.addControl(new TestControl());
 		while (true) {
 			try {
 				Thread.sleep(1000);
@@ -49,8 +52,7 @@ public class ButtonBoxBridge {
 				System.out.println("interrupted");
 				return;
 			}
-			double x = xSub.get();
-			System.out.println(x);
+			client.periodic();
 		}
 	}
 }
