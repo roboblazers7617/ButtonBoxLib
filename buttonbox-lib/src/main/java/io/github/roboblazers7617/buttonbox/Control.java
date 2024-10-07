@@ -8,10 +8,8 @@ import edu.wpi.first.networktables.NetworkTable;
 public class Control {
 	private NetworkTable table;
 
-	public Control(NetworkTable table) {
-		this.table = table;
-		setupNetworkTables(table);
-	}
+	/** Creates a new Control. */
+	public Control() {}
 
 	/** Updates the control's state. This doesn't do anything by default, and should be overridden by the class inheritting this. */
 	public void update() {}
@@ -22,5 +20,11 @@ public class Control {
 	/** Gets the NetworkTable used by this Control. */
 	public NetworkTable getTable() {
 		return table;
+	}
+
+	/** Sets the NetworkTable to be used by this Control. */
+	public void setTable(NetworkTable table) {
+		this.table = table;
+		setupNetworkTables(table);
 	}
 }

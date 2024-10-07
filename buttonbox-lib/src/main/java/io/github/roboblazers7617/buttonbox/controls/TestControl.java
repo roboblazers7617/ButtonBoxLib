@@ -10,9 +10,7 @@ public class TestControl extends Control {
 	private double value = 0;
 
 	/** Creates a new Control. */
-	public TestControl(NetworkTable table) {
-		super(table);
-	}
+	public TestControl() {}
 
 	@Override
 	public void setupNetworkTables(NetworkTable table) {
