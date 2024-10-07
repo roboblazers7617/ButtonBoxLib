@@ -17,7 +17,7 @@ public class TestControl extends Control {
 
 	@Override
 	public void setupNetworkTables(NetworkTable table) {
-		valuePub = getTable().getDoubleTopic("value").publish();
+		valuePub = table.getDoubleTopic("value").publish();
 	}
 
 	@Override
