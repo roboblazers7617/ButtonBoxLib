@@ -7,6 +7,7 @@ import edu.wpi.first.networktables.NetworkTable;
  */
 public class Control {
 	private NetworkTable table;
+	private String id = "Control";
 
 	/** Creates a new Control. */
 	public Control() {}
@@ -40,9 +41,14 @@ public class Control {
 		return table;
 	}
 
-	/** Sets the NetworkTable to be used by this Control. */
+	/** Sets the NetworkTable to be used by this Control. A subtable will be created with the ID string as its key. */
 	public void setTable(NetworkTable table) {
-		this.table = table;
-		setupNetworkTables(table);
+		this.table = table.getSubTable(id);
+		setupNetworkTables(this.table);
+	}
+
+	/** Sets the ID string. This must be called before setTable, otherwise the subtable name will not match the ID. */
+	public void setID(String id) {
+		this.id = id;
 	}
 }
