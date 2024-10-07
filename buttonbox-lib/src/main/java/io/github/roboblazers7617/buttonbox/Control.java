@@ -1,25 +1,26 @@
 package io.github.roboblazers7617.buttonbox;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.networktables.DoublePublisher;
 import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
 
 /**
- * Class for buttonbox controls. Handles NetworkTables logic and feedback.
+ * Class for buttonbox controls that handles feedback.
  */
-public class Control extends SubsystemBase {
-	private final DoublePublisher valuePub;
-	private double value = 0;
+public class Control {
+	private NetworkTable table;
 
-	/** Creates a new Control. */
 	public Control(NetworkTable table) {
-		valuePub = table.getDoubleTopic("value").publish();
+		this.table = table;
+		setupNetworkTables(table);
 	}
 
-	@Override
-	public void periodic() {
-		value += 0.01;
-		valuePub.set(value);
+	/** Updates the control's state. This doesn't do anything by default, and should be overridden by the class inheritting this. */
+	public void update() {}
+
+	/** Called when the NetworkTable is set. Should create all of the NetworkTables publishers and subscribers for the inheritting class. */
+	public void setupNetworkTables(NetworkTable table) {}
+
+	/** Gets the NetworkTable used by this Control. */
+	public NetworkTable getTable() {
+		return table;
 	}
 }
