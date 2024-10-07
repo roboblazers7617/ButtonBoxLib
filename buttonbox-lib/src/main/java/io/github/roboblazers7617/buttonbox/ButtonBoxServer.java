@@ -13,11 +13,13 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class ButtonBoxServer extends SubsystemBase {
 	private ArrayList<Control> controls = new ArrayList<Control>();
 	private final NetworkTable table;
+	private final NetworkTable controlTable;
 
 	/** Creates a new ButtonBoxServer. */
 	public ButtonBoxServer() {
 		NetworkTableInstance inst = NetworkTableInstance.getDefault();
 		table = inst.getTable("ButtonBox");
+		controlTable = table.getSubTable("Controls");
 	}
 
 	@Override
@@ -34,7 +36,7 @@ public class ButtonBoxServer extends SubsystemBase {
 	 *                The {@link io.github.roboblazers7617.buttonbox.Control} to add to the server.
 	 */
 	public void addControl(Control control) {
-		control.setTable(table);
+		control.setTable(controlTable);
 		controls.add(control);
 	}
 }

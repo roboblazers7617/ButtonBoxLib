@@ -11,10 +11,12 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class ButtonBoxClient {
 	private ArrayList<Control> controls = new ArrayList<Control>();
 	private final NetworkTable table;
+	private final NetworkTable controlTable;
 
 	/** Creates a new ButtonBoxClient. */
 	public ButtonBoxClient(NetworkTableInstance inst) {
 		table = inst.getTable("ButtonBox");
+		controlTable = table.getSubTable("Controls");
 	}
 
 	/** Should be called regularly to update the state of the Controls. */
@@ -31,7 +33,7 @@ public class ButtonBoxClient {
 	 *                The {@link io.github.roboblazers7617.buttonbox.Control} to add to the client.
 	 */
 	public void addControl(Control control) {
-		control.setTable(table);
+		control.setTable(controlTable);
 		controls.add(control);
 	}
 }
