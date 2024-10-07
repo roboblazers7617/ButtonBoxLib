@@ -31,7 +31,7 @@ public class ButtonBoxServer extends SubsystemBase {
 	 * Adds a control to the ButtonBoxServer.
 	 *
 	 * @param control
-	 *                The {@link io.github.roboblazers7617.buttonbox.Control } to add to the server.
+	 *                The {@link io.github.roboblazers7617.buttonbox.Control} to add to the server.
 	 */
 	public void addControl(Control control) {
 		control.setTable(table);
