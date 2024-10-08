@@ -6,7 +6,11 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.BooleanTopic;
 import edu.wpi.first.networktables.BooleanPublisher;
 import edu.wpi.first.networktables.BooleanSubscriber;
+
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
+import edu.wpi.first.hal.SimDevice;
+import edu.wpi.first.hal.SimBoolean;
 
 public class Button extends Control {
 	/** Used to communicate whether the physical button is pressed or not. */
@@ -25,8 +29,13 @@ public class Button extends Control {
 	private boolean lastPressed;
 	/** Stores the state of the button on the server, which is updated according to the button's mode. */
 	private boolean state;
+
 	/** Stores the selected {@link ButtonMode}. */
 	private ButtonMode buttonMode = ButtonMode.PUSH;
+
+	private SimDevice simDevice;
+	private SimBoolean pressedSim;
+	private SimBoolean stateSim;
 
 	/**
 	 * Determines how the state of the button should be updated when the button is pressed or released.
@@ -47,13 +56,23 @@ public class Button extends Control {
 		lastPressed = false;
 		pressed = false;
 		state = false;
+		simDevice = SimDevice.create("Button");
+		pressedSim = simDevice.createBoolean("Pressed", SimDevice.Direction.kBidir, pressed);
+		stateSim = simDevice.createBoolean("State", SimDevice.Direction.kOutput, state);
 	}
 
 	@Override
 	public void updateServer() {
 		pressed = pressedSub.get();
-		if (buttonMode == ButtonMode.TOGGLE_RISING || buttonMode == ButtonMode.TOGGLE_FALLING) {
-			if (pressed != lastPressed) {
+
+		if (pressed == lastPressed) {
+			pressed = pressedSim.get();
+		} else {
+			pressedSim.set(pressed);
+		}
+
+		if (pressed != lastPressed) {
+			if (buttonMode == ButtonMode.TOGGLE_RISING || buttonMode == ButtonMode.TOGGLE_FALLING) {
 				if (lastPressed) {
 					if (buttonMode == ButtonMode.TOGGLE_FALLING) {
 						state = !state;
@@ -63,12 +82,17 @@ public class Button extends Control {
 						state = !state;
 					}
 				}
-				lastPressed = pressed;
+			} else if (buttonMode == ButtonMode.PUSH) {
+				state = pressed;
 			}
-		} else if (buttonMode == ButtonMode.PUSH) {
-			state = pressed;
+
+			lastPressed = pressed;
 		}
+
+		pressedPub.set(pressed);
 		statePub.set(state);
+
+		stateSim.set(state);
 	}
 
 	@Override
