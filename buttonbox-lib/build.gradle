@@ -50,3 +50,10 @@ shadowJar {
 	exclude("module-info.class")
 	archiveClassifier.set(wpilibTools.currentPlatform.platformName)
 }
+
+// Build javadoc
+tasks.withType(Javadoc) {
+	options.setLinks([
+		"https://github.wpilib.org/allwpilib/docs/release/java",
+	])
+}
