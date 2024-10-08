@@ -44,7 +44,7 @@ public class ButtonBoxBridge {
 		inst.setServer("localhost"); // where TEAM=190, 294, etc, or use inst.setServer("hostname") or similar
 		inst.startDSClient(); // recommended if running on DS computer; this gets the robot IP from the DS
 		ButtonBoxClient client = new ButtonBoxClient(inst);
-		client.addControl(new TestControl());
+		client.addControl(new TestControl("Test Control"));
 		while (true) {
 			try {
 				Thread.sleep(1000);

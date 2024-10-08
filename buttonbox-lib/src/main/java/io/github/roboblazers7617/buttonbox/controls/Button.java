@@ -50,12 +50,19 @@ public class Button extends Control {
 	}
 
 	/**
-	 * Creates a new Button
+	 * Creates a new Button.
+	 *
+	 * @param id
+	 *                The ID string for the Button to use.
+	 * @see io.github.roboblazers7617.buttonbox.Control
 	 */
-	public Button() {
+	public Button(String id) {
+		super(id);
+
 		lastPressed = false;
 		pressed = false;
 		state = false;
+
 		simDevice = SimDevice.create("Button");
 		pressedSim = simDevice.createBoolean("Pressed", SimDevice.Direction.kBidir, pressed);
 		stateSim = simDevice.createBoolean("State", SimDevice.Direction.kOutput, state);

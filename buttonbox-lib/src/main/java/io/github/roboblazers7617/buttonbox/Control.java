@@ -7,10 +7,17 @@ import edu.wpi.first.networktables.NetworkTable;
  */
 public class Control {
 	private NetworkTable table;
-	private String id = "Control";
+	private String id;
 
-	/** Creates a new Control. */
-	public Control() {}
+	/**
+	 * Creates a new Control.
+	 *
+	 * @param id
+	 *                The ID string that the device should use. This will be used as the name for the NetworkTables subtable used by this control.
+	 */
+	public Control(String id) {
+		this.id = id;
+	}
 
 	/**
 	 * Updates the control's state on the server.
@@ -45,10 +52,5 @@ public class Control {
 	public void setTable(NetworkTable table) {
 		this.table = table.getSubTable(id);
 		setupNetworkTables(this.table);
-	}
-
-	/** Sets the ID string. This must be called before setTable, otherwise the subtable name will not match the ID. */
-	public void setID(String id) {
-		this.id = id;
 	}
 }

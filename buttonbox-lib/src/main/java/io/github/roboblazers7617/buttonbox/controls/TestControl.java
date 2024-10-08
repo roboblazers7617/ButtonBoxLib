@@ -16,8 +16,16 @@ public class TestControl extends Control {
 	private DoubleSubscriber valueSub;
 	private double value = 0;
 
-	/** Creates a new TestControl. */
-	public TestControl() {}
+	/**
+	 * Creates a new TestControl.
+	 *
+	 * @param id
+	 *                The ID string for the TestControl to use.
+	 * @see io.github.roboblazers7617.buttonbox.Control
+	 */
+	public TestControl(String id) {
+		super(id);
+	}
 
 	@Override
 	public void setupNetworkTables(NetworkTable table) {
