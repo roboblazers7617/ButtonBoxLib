@@ -22,7 +22,7 @@ public class ButtonBoxClient {
 	/** Should be called regularly to update the state of the Controls. */
 	public void periodic() {
 		for (Control control : controls) {
-			control.updateClient();
+			control.updateOnClient();
 		}
 	}
 

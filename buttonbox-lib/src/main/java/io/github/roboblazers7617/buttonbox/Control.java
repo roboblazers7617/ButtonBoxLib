@@ -27,11 +27,26 @@ public class Control {
 	public void updateServer() {}
 
 	/**
-	 * Updates the control's state on the client. This should have logic in it that polls the hardware's state and sends it to the server.
+	 * Updates the control's state on the client and hardware. This is called by the program loop and is not intended to be overridden.
+	 */
+	public void updateOnClient() {
+		updateClient();
+		updateHardware();
+	}
+
+	/**
+	 * Updates the control's state on the client. This should get any feedback from the server, but this should not interface with the buttonbox hardware.
 	 * <p>
 	 * This doesn't do anything by default, and should be overridden by the class inheritting this.
 	 */
 	public void updateClient() {}
+
+	/**
+	 * Interfaces with the buttonbox hardware and updates the state of the physical control. Called after {@link updateClient}.
+	 * <p>
+	 * This doesn't do anything by default, and should be overridden by the class inheritting this.
+	 */
+	public void updateHardware() {}
 
 	/**
 	 * Called by the Control class when the NetworkTable is set. Not intended to be called outside of the class.
