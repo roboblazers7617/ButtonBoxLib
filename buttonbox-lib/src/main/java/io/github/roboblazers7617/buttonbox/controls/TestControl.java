@@ -42,6 +42,15 @@ public class TestControl extends Control {
 
 	@Override
 	public void updateClient() {
-		System.out.println(valueSub.get());
+		value = valueSub.get();
+		System.out.println(value);
+	}
+
+	/**
+	 * @return
+	 *         The current value of the TestControl
+	 */
+	public double getValue() {
+		return value;
 	}
 }
