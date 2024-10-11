@@ -1,6 +1,7 @@
 package io.github.roboblazers7617.buttonbox;
 
 import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.RobotBase;
 
 /**
  * Class for buttonbox controls that handles feedback and NetworkTables.
@@ -17,6 +18,10 @@ public class Control {
 	 */
 	public Control(String id) {
 		this.id = id;
+
+		if (RobotBase.isSimulation()) {
+			setupSimulation();
+		}
 	}
 
 	/**
@@ -57,6 +62,13 @@ public class Control {
 	 *                {@link edu.wpi.first.networktables.NetworkTable}
 	 */
 	public void setupNetworkTables(NetworkTable table) {}
+
+	/**
+	 * Should set up any simulation-specific things.
+	 * <p>
+	 * Called as a part of the constructor if the library is running in simulation.
+	 */
+	public void setupSimulation() {}
 
 	/** Gets the NetworkTable used by this Control. */
 	public NetworkTable getTable() {
