@@ -70,6 +70,16 @@ public class Control {
 	 */
 	public void setupSimulation() {}
 
+	/**
+	 * Gets the ID of this control.
+	 *
+	 * @return
+	 *         The ID of this control.
+	 */
+	public String getId() {
+		return id;
+	}
+
 	/** Gets the NetworkTable used by this Control. */
 	public NetworkTable getTable() {
 		return table;
