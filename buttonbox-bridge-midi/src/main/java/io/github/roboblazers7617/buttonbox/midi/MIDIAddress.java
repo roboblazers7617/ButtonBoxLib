@@ -8,6 +8,8 @@ public class MIDIAddress {
 	public final int command;
 	public final int channel;
 	public final int data1;
+	/** Stores the last value sent so duplicate values aren't sent to the address. */
+	private int lastData;
 
 	/**
 	 * Creates a new MIDIAddress with the specified command, channel, and data1.
@@ -36,9 +38,12 @@ public class MIDIAddress {
 	 * @throws InvalidMidiDataException
 	 */
 	public void send(int data) throws InvalidMidiDataException {
-		ShortMessage message = new ShortMessage();
-		message.setMessage(command, channel, data1, data);
-		midiDevice.send(message);
+		if (data != lastData) {
+			ShortMessage message = new ShortMessage();
+			message.setMessage(command, channel, data1, data);
+			midiDevice.send(message);
+			lastData = data;
+		}
 	}
 
 	/**
