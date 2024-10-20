@@ -62,8 +62,11 @@ public class Button extends Control {
 		lastPressed = false;
 		pressed = false;
 		state = false;
+	}
 
-		simDevice = SimDevice.create(id);
+	@Override
+	public void setupSimulation() {
+		simDevice = SimDevice.create(getId());
 		pressedSim = simDevice.createBoolean("Pressed", SimDevice.Direction.kBidir, pressed);
 		stateSim = simDevice.createBoolean("State", SimDevice.Direction.kOutput, state);
 	}

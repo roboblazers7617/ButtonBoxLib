@@ -1,5 +1,6 @@
 package io.github.roboblazers7617.buttonbox;
 
+import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import java.util.ArrayList;
@@ -36,6 +37,10 @@ public class ButtonBoxServer extends SubsystemBase {
 	 *                The {@link io.github.roboblazers7617.buttonbox.Control} to add to the server.
 	 */
 	public void addControl(Control control) {
+		if (RobotBase.isSimulation()) {
+			control.setupSimulation();
+		}
+
 		control.setTable(controlTable);
 		controls.add(control);
 	}
