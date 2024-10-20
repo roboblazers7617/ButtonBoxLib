@@ -7,6 +7,9 @@ import edu.wpi.first.networktables.DoublePublisher;
 import edu.wpi.first.networktables.DoubleSubscriber;
 import edu.wpi.first.networktables.NetworkTable;
 
+import edu.wpi.first.hal.SimDevice;
+import edu.wpi.first.hal.SimDouble;
+
 /**
  * A test {@link io.github.roboblazers7617.buttonbox.Control} that outputs a float that is increased every time feedback is updated.
  */
@@ -15,6 +18,9 @@ public class TestControl extends Control {
 	private DoublePublisher valuePub;
 	private DoubleSubscriber valueSub;
 	private double value = 0;
+
+	private SimDevice simDevice;
+	private SimDouble valueSim;
 
 	/**
 	 * Creates a new TestControl.
@@ -28,6 +34,12 @@ public class TestControl extends Control {
 	}
 
 	@Override
+	public void setupSimulation() {
+		simDevice = SimDevice.create(getId());
+		valueSim = simDevice.createDouble("Value", SimDevice.Direction.kOutput, value);
+	}
+
+	@Override
 	public void setupNetworkTables(NetworkTable table) {
 		valueTopic = table.getDoubleTopic("value");
 		valuePub = valueTopic.publish();
@@ -38,6 +50,7 @@ public class TestControl extends Control {
 	public void updateServer() {
 		value += 0.01;
 		valuePub.set(value);
+		valueSim.set(value);
 	}
 
 	@Override
