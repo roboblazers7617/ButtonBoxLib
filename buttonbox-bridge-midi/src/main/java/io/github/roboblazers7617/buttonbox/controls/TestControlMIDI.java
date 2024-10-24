@@ -1,7 +1,5 @@
 package io.github.roboblazers7617.buttonbox.controls;
 
-import javax.sound.midi.InvalidMidiDataException;
-
 import io.github.roboblazers7617.buttonbox.midi.MIDIAddress;
 
 /**
@@ -27,10 +25,6 @@ public class TestControlMIDI extends TestControl {
 	@Override
 	public void updateHardware() {
 		System.out.println(getValue());
-		try {
-			midiAddress.send((int) (getValue() % 127));
-		} catch (InvalidMidiDataException ex) {
-			System.err.println("Invalid MIDI data!");
-		}
+		midiAddress.send((int) (getValue() % 127));
 	}
 }

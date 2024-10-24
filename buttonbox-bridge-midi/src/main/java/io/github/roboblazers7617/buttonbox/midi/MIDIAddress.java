@@ -35,12 +35,15 @@ public class MIDIAddress {
 	 *
 	 * @param data
 	 *                Integer between 0 and 127 to send.
-	 * @throws InvalidMidiDataException
 	 */
-	public void send(int data) throws InvalidMidiDataException {
+	public void send(int data) {
 		if (data != lastData) {
 			ShortMessage message = new ShortMessage();
-			message.setMessage(command, channel, data1, data);
+			try {
+				message.setMessage(command, channel, data1, data);
+			} catch (InvalidMidiDataException ex) {
+				System.err.println(ex);
+			}
 			midiDevice.send(message);
 			lastData = data;
 		}
@@ -51,9 +54,8 @@ public class MIDIAddress {
 	 *
 	 * @param data
 	 *                Double between 0 and 1 to send.
-	 * @throws InvalidMidiDataException
 	 */
-	public void sendDouble(MIDIDevice device, int data) throws InvalidMidiDataException {
+	public void sendDouble(MIDIDevice device, int data) {
 		send((int) (data * 127));
 	}
 }
