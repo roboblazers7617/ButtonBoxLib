@@ -24,7 +24,6 @@ public class TestControlMIDI extends TestControl {
 
 	@Override
 	public void updateHardware() {
-		System.out.println(getValue());
 		midiAddress.send((int) (getValue() % 127));
 	}
 }
