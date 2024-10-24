@@ -11,7 +11,7 @@ import edu.wpi.first.hal.SimDevice;
 import edu.wpi.first.hal.SimDouble;
 
 /**
- * A test {@link io.github.roboblazers7617.buttonbox.Control} that outputs a float that is increased every time feedback is updated.
+ * A test {@link io.github.roboblazers7617.buttonbox.Control} that sends a float that is increased every time server feedback is updated and outputs it to the client TTY.
  */
 public class TestControl extends Control {
 	private DoubleTopic valueTopic;
@@ -56,6 +56,10 @@ public class TestControl extends Control {
 	@Override
 	public void updateClient() {
 		value = valueSub.get();
+	}
+
+	@Override
+	public void updateHardware() {
 		System.out.println(value);
 	}
 
