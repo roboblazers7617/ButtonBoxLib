@@ -11,6 +11,7 @@ public class MIDIDevice {
 	private final MidiDevice txDevice;
 	private final Receiver receiver;
 	private final Transmitter transmitter;
+	private final MIDIRouter router;
 
 	/**
 	 * Wrapper for {@link MidiDevice}
@@ -27,9 +28,16 @@ public class MIDIDevice {
 		this.txDevice = txDevice;
 		this.receiver = rxDevice.getReceiver();
 		this.transmitter = txDevice.getTransmitter();
+
+		router = new MIDIRouter();
+		this.transmitter.setReceiver(router);
 	}
 
 	public void send(ShortMessage message) {
 		receiver.send(message, -1);
+	}
+
+	public MIDIRouter getRouter() {
+		return router;
 	}
 }

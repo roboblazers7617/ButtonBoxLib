@@ -107,6 +107,7 @@ public class Button extends Control {
 
 	@Override
 	public void updateClient() {
+		pressedPub.set(pressed);
 		state = stateSub.get();
 	}
 
@@ -130,6 +131,16 @@ public class Button extends Control {
 	 */
 	public boolean getState() {
 		return state;
+	}
+
+	/**
+	 * Sets whether the button is pressed or not.
+	 *
+	 * @param pressed
+	 *                Is the button pressed?
+	 */
+	public void setPressed(boolean pressed) {
+		this.pressed = pressed;
 	}
 
 	/**

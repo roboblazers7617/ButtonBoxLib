@@ -10,6 +10,7 @@ public class MIDIAddress {
 	public final int data1;
 	/** Stores the last value sent so duplicate values aren't sent to the address. */
 	private int lastData;
+	private int feedback;
 
 	/**
 	 * Creates a new MIDIAddress with the specified command, channel, and data1.
@@ -28,6 +29,38 @@ public class MIDIAddress {
 		this.command = command;
 		this.channel = channel;
 		this.data1 = data1;
+
+		midiDevice.getRouter().addAddress(this);
+	}
+
+	/**
+	 * Gets the address's command.
+	 *
+	 * @return
+	 *         MIDI command number.
+	 */
+	public int getCommand() {
+		return command;
+	}
+
+	/**
+	 * Gets the address's channel.
+	 *
+	 * @return
+	 *         MIDI channel number.
+	 */
+	public int getChannel() {
+		return channel;
+	}
+
+	/**
+	 * Gets the address's data1 value.
+	 *
+	 * @return
+	 *         Data1 value.
+	 */
+	public int getData1() {
+		return data1;
 	}
 
 	/**
@@ -57,5 +90,22 @@ public class MIDIAddress {
 	 */
 	public void sendDouble(MIDIDevice device, int data) {
 		send((int) (data * 127));
+	}
+
+	/**
+	 * Gets feedback from the address.
+	 *
+	 * @return
+	 *         Integer between 0 and 127 containing control feedback.
+	 */
+	public int getFeedback() {
+		return feedback;
+	}
+
+	/**
+	 * Sets the feedback for the address. Not intended to be called outside of the {@link MIDIRouter} class.
+	 */
+	public void setFeedback(int feedback) {
+		this.feedback = feedback;
 	}
 }

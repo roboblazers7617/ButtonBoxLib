@@ -27,5 +27,6 @@ public class ButtonMIDI extends Button {
 		} else {
 			midiAddress.send(0);
 		}
+		setPressed(midiAddress.getFeedback() != 0);
 	}
 }
