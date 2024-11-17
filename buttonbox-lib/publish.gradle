@@ -4,7 +4,7 @@ ext.licenseFile = files("$rootDir/LICENSE.txt")
 
 def pubVersion = System.getenv("releaseVersion") ?: "test"
 
-def releasesRepoUrl = "$buildDir/repos/releases"
+def releasesRepoUrl = "$buildDir/repos/buttonbox-lib"
 
 def outputsFolder = file("$buildDir/outputs")
 
