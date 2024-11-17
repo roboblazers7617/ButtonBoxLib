@@ -4,7 +4,6 @@ plugins {
 	id 'com.github.johnrengelman.shadow' version '8.1.1'
 	id "edu.wpi.first.GradleRIO" version "2024.3.2"
 	id 'edu.wpi.first.WpilibTools' version '1.3.0'
-	id 'maven-publish'
 }
 
 wpilibTools.deps.wpilibVersion = wpi.versions.wpilibVersion.get()
@@ -52,29 +51,11 @@ shadowJar {
 	archiveClassifier.set(wpilibTools.currentPlatform.platformName)
 }
 
-// Publish to Maven
-// Used for the vendordep
-publishing {
-	repositories {
-		maven {
-			name = "GitHubPackages"
-			url = uri("https://maven.pkg.github.com/roboblazers7617/ButtonBoxLib")
-			credentials {
-				username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
-				password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
-			}
-		}
-	}
-	publications {
-		gpr(MavenPublication) {
-			from(components.java)
-		}
-	}
-}
-
 // Build javadoc
 tasks.withType(Javadoc) {
 	options.setLinks([
 		"https://github.wpilib.org/allwpilib/docs/release/java",
 	])
 }
+
+apply from: 'publish.gradle'
