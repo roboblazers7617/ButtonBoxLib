@@ -11,7 +11,7 @@
 	"javaDependencies": [
 		{
 			"groupId": "io.github.roboblazers7617.buttonbox",
-			"artifactId": "ButtonBoxLib",
+			"artifactId": "ButtonBoxLib-java",
 			"version": "${version}"
 		}
 	],
