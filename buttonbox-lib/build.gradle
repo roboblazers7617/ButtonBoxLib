@@ -51,11 +51,5 @@ shadowJar {
 	archiveClassifier.set(wpilibTools.currentPlatform.platformName)
 }
 
-// Build javadoc
-tasks.withType(Javadoc) {
-	options.setLinks([
-		"https://github.wpilib.org/allwpilib/docs/release/java",
-	])
-}
-
+apply from: '../javadoc.gradle'
 apply from: 'publish.gradle'
