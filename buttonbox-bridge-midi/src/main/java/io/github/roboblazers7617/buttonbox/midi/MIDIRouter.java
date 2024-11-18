@@ -25,9 +25,9 @@ public class MIDIRouter implements Receiver {
 			for (MIDIAddress address : addresses) {
 				if (address.getChannel() == channel && address.getData1() == data1) {
 					if (command == ShortMessage.NOTE_OFF && address.getCommand() == ShortMessage.NOTE_ON) {
-						address.setFeedback(0);
+						address.setFeedbackRaw(0);
 					} else if (address.getCommand() == command) {
-						address.setFeedback(value);
+						address.setFeedbackRaw(value);
 					}
 				}
 			}

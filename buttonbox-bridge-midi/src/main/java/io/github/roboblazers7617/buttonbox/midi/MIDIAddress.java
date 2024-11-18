@@ -3,7 +3,9 @@ package io.github.roboblazers7617.buttonbox.midi;
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
 
-public class MIDIAddress {
+import io.github.roboblazers7617.buttonbox.Address;
+
+public class MIDIAddress implements Address {
 	public final MIDIDevice midiDevice;
 	public final int command;
 	public final int channel;
@@ -63,13 +65,17 @@ public class MIDIAddress {
 		return data1;
 	}
 
+	public void send(double data) {
+		sendRaw((int) (data * 127));
+	}
+
 	/**
-	 * Sends data to the address.
+	 * Sends raw data to the address.
 	 *
 	 * @param data
 	 *                Integer between 0 and 127 to send.
 	 */
-	public void send(int data) {
+	public void sendRaw(int data) {
 		if (data != lastData) {
 			ShortMessage message = new ShortMessage();
 			try {
@@ -82,14 +88,8 @@ public class MIDIAddress {
 		}
 	}
 
-	/**
-	 * Scales a double and sends it.
-	 *
-	 * @param data
-	 *                Double between 0 and 1 to send.
-	 */
-	public void sendDouble(MIDIDevice device, int data) {
-		send((int) (data * 127));
+	public double getFeedback() {
+		return feedback / 127;
 	}
 
 	/**
@@ -98,14 +98,14 @@ public class MIDIAddress {
 	 * @return
 	 *         Integer between 0 and 127 containing control feedback.
 	 */
-	public int getFeedback() {
+	public int getFeedbackRaw() {
 		return feedback;
 	}
 
 	/**
 	 * Sets the feedback for the address. Not intended to be called outside of the {@link MIDIRouter} class.
 	 */
-	public void setFeedback(int feedback) {
+	public void setFeedbackRaw(int feedback) {
 		this.feedback = feedback;
 	}
 }
