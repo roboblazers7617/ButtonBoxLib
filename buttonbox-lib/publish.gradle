@@ -1,6 +1,6 @@
 apply plugin: 'maven-publish'
 
-ext.licenseFile = files("$rootDir/LICENSE.txt")
+ext.licenseFile = files("$rootDir/LICENSE.md")
 
 def pubVersion = System.getenv("releaseVersion") ?: "test"
 
