@@ -57,7 +57,7 @@ jobs:
       - name: Publish with Gradle Wrapper
         run: ./gradlew publish
 
-      - name: Upload Maven repository
+      - name: Upload ButtonBoxLib Maven repository
         uses: actions/upload-artifact@v4.3.1
         with:
           # Artifact name
@@ -65,13 +65,29 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: ./buttonbox-lib/build/repos/
 
-      - name: Upload Vendordep
+      - name: Upload ButtonBoxBridgeMIDI Maven repository
         uses: actions/upload-artifact@v4.3.1
         with:
           # Artifact name
-          name: vendordep
+          name: maven
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ./buttonbox-bridge-midi/build/repos/
+
+      - name: Upload ButtonBoxLib Vendordep
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          # Artifact name
+          name: buttonbox-lib-vendordep
           # A file, directory or wildcard pattern that describes what to upload
           path: ./buttonbox-lib/build/outputs/ButtonBoxLib.json
+
+      - name: Upload ButtonBoxBridgeMIDI Vendordep
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          # Artifact name
+          name: buttonbox-bridge-midi-vendordep
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ./buttonbox-bridge-midi/build/outputs/ButtonBoxBridgeMIDI.json
 
   combine:
     needs: [build-javadoc, build-library]
