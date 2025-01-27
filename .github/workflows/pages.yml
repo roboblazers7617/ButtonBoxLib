@@ -73,13 +73,13 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: ./buttonbox-lib/build/outputs/ButtonBoxLib.json
 
-      - name: Upload ButtonBoxBridgeMIDI Vendordep
+      - name: Upload ButtonBoxLibMIDI Vendordep
         uses: actions/upload-artifact@v4.3.1
         with:
           # Artifact name
-          name: buttonbox-bridge-midi-vendordep
+          name: buttonbox-lib-midi-vendordep
           # A file, directory or wildcard pattern that describes what to upload
-          path: ./buttonbox-bridge-midi/build/outputs/ButtonBoxBridgeMIDI.json
+          path: ./buttonbox-lib-midi/build/outputs/ButtonBoxLibMIDI.json
 
   combine:
     needs: [build-javadoc, build-library]
