@@ -48,7 +48,13 @@ public class TestControl extends Control {
 
 	@Override
 	public void updateServer() {
-		value += 0.01;
+		value += 0.001;
+
+		// Wrap values
+		if (value > 1.0) {
+			value = 0;
+		}
+
 		valuePub.set(value);
 		valueSim.set(value);
 	}
@@ -65,7 +71,7 @@ public class TestControl extends Control {
 
 	/**
 	 * @return
-	 *         The current value of the TestControl
+	 *         The current value of the TestControl.
 	 */
 	public double getValue() {
 		return value;
