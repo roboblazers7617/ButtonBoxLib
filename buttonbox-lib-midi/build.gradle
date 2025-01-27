@@ -21,7 +21,7 @@ nativeConfig.dependencies.add wpilibTools.deps.wpilib("wpinet")
 nativeConfig.dependencies.add wpilibTools.deps.wpilib("wpiutil")
 nativeConfig.dependencies.add wpilibTools.deps.wpilib("ntcore")
 nativeConfig.dependencies.add wpilibTools.deps.wpilib("cscore")
-nativeConfig.dependencies.add wpilibTools.deps.wpilibOpenCv("frc" + '2025', wpi.versions.opencvVersion.get())
+nativeConfig.dependencies.add wpilibTools.deps.wpilibOpenCv("frc" + wpi.frcYear.get(), wpi.versions.opencvVersion.get())
 
 dependencies {
 	implementation wpilibTools.deps.wpilibJava("wpilibNewCommands")
@@ -34,7 +34,7 @@ dependencies {
 	implementation wpilibTools.deps.wpilibJava("cameraserver")
 	implementation wpilibTools.deps.wpilibJava("hal")
 
-	implementation wpilibTools.deps.wpilibOpenCvJava("frc" + '2025', wpi.versions.opencvVersion.get())
+	implementation wpilibTools.deps.wpilibOpenCvJava("frc" + wpi.frcYear.get(), wpi.versions.opencvVersion.get())
 
 	implementation group: "com.fasterxml.jackson.core", name: "jackson-annotations", version: wpi.versions.jacksonVersion.get()
 	implementation group: "com.fasterxml.jackson.core", name: "jackson-core", version: wpi.versions.jacksonVersion.get()
