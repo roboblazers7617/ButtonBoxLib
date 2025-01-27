@@ -34,11 +34,11 @@ public class MIDIUtil {
 			try {
 				device = MidiSystem.getMidiDevice(infos[i]);
 
-				if (device.getMaxReceivers() != 0 && infos[i].getName() == rxName) {
+				if (device.getMaxReceivers() != 0 && infos[i].getName().equals(rxName)) {
 					recieverDevices.add(device);
 				}
 
-				if (device.getMaxTransmitters() != 0 && infos[i].getName() == txName) {
+				if (device.getMaxTransmitters() != 0 && infos[i].getName().equals(txName)) {
 					transmitterDevices.add(device);
 				}
 			} catch (MidiUnavailableException ex) {
