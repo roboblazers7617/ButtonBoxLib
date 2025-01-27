@@ -89,7 +89,7 @@ public class MIDIAddress implements Address {
 	}
 
 	public double getFeedback() {
-		return feedback / 127;
+		return feedback / 127.0;
 	}
 
 	/**
