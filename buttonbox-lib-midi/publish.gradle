@@ -4,13 +4,13 @@ ext.licenseFile = files("$rootDir/LICENSE.md")
 
 def pubVersion = System.getenv("releaseVersion") ?: "test"
 
-def releasesRepoUrl = "$rootDir/repos/buttonbox-bridge-midi"
+def releasesRepoUrl = "$rootDir/repos/buttonbox-lib-midi"
 
 def outputsFolder = file("$buildDir/outputs")
 
 def versionFile = file("$outputsFolder/version.txt")
 
-def vendordepFile = file("$outputsFolder/ButtonBoxBridgeMIDI.json")
+def vendordepFile = file("$outputsFolder/ButtonBoxLibMIDI.json")
 
 task outputVersions() {
 	description = 'Prints the versions of wpilib to a file for use by the downstream packaging project'
@@ -47,7 +47,7 @@ ext.addTaskToCopyAllOutputs = { task ->
 }
 
 def artifactGroupId = 'io.github.roboblazers7617.buttonbox.midi'
-def baseArtifactId = 'ButtonBoxBridgeMIDI'
+def baseArtifactId = 'ButtonBoxLibMIDI'
 def javaBaseName = "_GROUP_io_github_roboblazers7617_ID_${baseArtifactId}-java_CLS"
 
 task sourcesJar(type: Jar, dependsOn: classes) {
@@ -88,7 +88,7 @@ task vendordepJson() {
     outputs.files(vendordepFile)
 
     copy {
-        from "ButtonBoxBridgeMIDI.json"
+        from "ButtonBoxLibMIDI.json"
         into outputsFolder
         expand(version: pubVersion,
         groupId: artifactGroupId,

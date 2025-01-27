@@ -8,5 +8,5 @@ pluginManagement {
 
 rootProject.name = 'buttonbox'
 include 'buttonbox-lib'
+include 'buttonbox-lib-midi'
 //include 'buttonbox-bridge'
-include 'buttonbox-bridge-midi'

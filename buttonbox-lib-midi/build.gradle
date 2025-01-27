@@ -47,7 +47,7 @@ dependencies {
 }
 
 shadowJar {
-	archiveBaseName = "ButtonBoxBridgeMIDI"
+	archiveBaseName = "ButtonBoxLibMIDI"
 	archiveVersion = ""
 	exclude("module-info.class")
 	archiveClassifier.set(wpilibTools.currentPlatform.platformName)
