@@ -15,6 +15,7 @@ import javax.sound.midi.ShortMessage;
 
 import io.github.roboblazers7617.buttonbox.controls.PhysicalTestControl;
 import io.github.roboblazers7617.buttonbox.controls.PhysicalButton;
+import io.github.roboblazers7617.buttonbox.controls.PhysicalJoystick;
 import io.github.roboblazers7617.buttonbox.midi.MIDIUtil;
 import io.github.roboblazers7617.buttonbox.midi.MIDIDevice;
 import io.github.roboblazers7617.buttonbox.midi.MIDIAddress;
@@ -39,7 +40,7 @@ public class ButtonBoxBridge {
 		inst.setServer("localhost"); // where TEAM=190, 294, etc, or use inst.setServer("hostname") or similar
 		inst.startDSClient(); // recommended if running on DS computer; this gets the robot IP from the DS
 
-		Optional<MIDIDevice> midiDevice = MIDIUtil.getDeviceByName("Protokol", "IAC Bus 1");
+		Optional<MIDIDevice> midiDevice = MIDIUtil.getDeviceByName("IAC Bus 1", "IAC Bus 2");
 
 		if (midiDevice.isEmpty()) {
 			throw new MidiUnavailableException("No MIDI device found.");
@@ -65,7 +66,8 @@ public class ButtonBoxBridge {
 	 */
 	private void configureControls(ButtonBoxClient client, MIDIDevice midiDevice) {
 		// Test controls
-		client.addControl(new PhysicalTestControl("Test Control", new MIDIAddress(midiDevice, ShortMessage.CONTROL_CHANGE, 1, 0)));
-		client.addControl(new PhysicalButton("Test Button", new MIDIAddress(midiDevice, ShortMessage.NOTE_ON, 1, 0)));
+		client.addControl(new PhysicalTestControl("Test Control", new MIDIAddress(midiDevice, ShortMessage.CONTROL_CHANGE, 0, 0)));
+		client.addControl(new PhysicalButton("Test Button", new MIDIAddress(midiDevice, ShortMessage.NOTE_ON, 0, 0)));
+		client.addControl(new PhysicalJoystick("Test Joystick", new MIDIAddress(midiDevice, ShortMessage.CONTROL_CHANGE, 0, 1), new MIDIAddress(midiDevice, ShortMessage.CONTROL_CHANGE, 0, 2), new MIDIAddress(midiDevice, ShortMessage.NOTE_ON, 0, 1)));
 	}
 }
