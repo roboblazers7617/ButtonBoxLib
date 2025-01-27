@@ -64,6 +64,8 @@ jobs:
           name: maven
           # A file, directory or wildcard pattern that describes what to upload
           path: ./repos/
+          # The desired behavior if no files are found using the provided path.
+          if-no-files-found: error
 
       - name: Upload ButtonBoxLib Vendordep
         uses: actions/upload-artifact@v4.3.1
@@ -72,6 +74,8 @@ jobs:
           name: buttonbox-lib-vendordep
           # A file, directory or wildcard pattern that describes what to upload
           path: ./buttonbox-lib/build/outputs/ButtonBoxLib.json
+          # The desired behavior if no files are found using the provided path.
+          if-no-files-found: error
 
       - name: Upload ButtonBoxLibMIDI Vendordep
         uses: actions/upload-artifact@v4.3.1
@@ -80,6 +84,8 @@ jobs:
           name: buttonbox-lib-midi-vendordep
           # A file, directory or wildcard pattern that describes what to upload
           path: ./buttonbox-lib-midi/build/outputs/ButtonBoxLibMIDI.json
+          # The desired behavior if no files are found using the provided path.
+          if-no-files-found: error
 
   combine:
     needs: [build-javadoc, build-library]
