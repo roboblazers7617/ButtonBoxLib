@@ -11,4 +11,8 @@ A library for creating NetworkTables-based buttonboxes for FRC.
 
 ---
 
-ButtonBoxLib is a library for creating buttonboxes, with support for advanced controls and feedback display. While HID-based buttonboxes are largely one-directional, ButtonBoxLib enables teams to give rich feedback to drivers. The simple structure of this library makes it easy to extend with custom Control classes, and the communication with hardware is done with a transport-independent interface, making it possible to implement custom protocols.
+ButtonBoxLib is a library for creating buttonboxes, with support for advanced controls and feedback display.
+
+## Advantages
+
+While HID-based buttonboxes are largely one-directional, ButtonBoxLib enables teams to give rich feedback to drivers. The simple structure of this library makes it easy to extend with custom Control classes, and the communication with hardware is done with a transport-independent interface, making it possible to implement custom protocols.
