@@ -1,8 +1,12 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: ButtonBoxLib Docs
+description: Documentation for the ButtonBoxLib library.
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
+url: https://roboblazers7617.github.io/ButtonBoxLib
 
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  Repository: https://github.com/roboblazers7617/ButtonBoxLib
+
+nav_external_links:
+  - title: Java API documentation
+    url: https://roboblazers7617.github.io/ButtonBoxLib/javadoc
