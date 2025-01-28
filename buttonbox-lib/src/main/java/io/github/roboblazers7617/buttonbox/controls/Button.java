@@ -12,6 +12,9 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.hal.SimDevice;
 import edu.wpi.first.hal.SimBoolean;
 
+/**
+ * A push button with configurable feedback. Intended for use with a momentary switch that is lit by a controllable LED.
+ */
 public class Button extends Control {
 	/** Used to communicate whether the physical button is pressed or not. */
 	private BooleanTopic pressedTopic;

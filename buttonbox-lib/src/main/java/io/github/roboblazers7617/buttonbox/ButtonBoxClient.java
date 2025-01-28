@@ -13,7 +13,12 @@ public class ButtonBoxClient {
 	private final NetworkTable table;
 	private final NetworkTable controlTable;
 
-	/** Creates a new ButtonBoxClient. */
+	/**
+	 * Creates a new ButtonBoxClient.
+	 *
+	 * @param inst
+	 *                {@link NetworkTableInstance} to use.
+	 */
 	public ButtonBoxClient(NetworkTableInstance inst) {
 		table = inst.getTable("ButtonBox");
 		controlTable = table.getSubTable("Controls");

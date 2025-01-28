@@ -1,5 +1,8 @@
 package io.github.roboblazers7617.buttonbox;
 
+/**
+ * A channel through which data can be sent and recieved to and from ButtonBox hardware.
+ */
 public interface Address {
 	/**
 	 * Sends data to the address.

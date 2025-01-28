@@ -16,6 +16,9 @@ import edu.wpi.first.hal.SimBoolean;
 import edu.wpi.first.hal.SimDevice;
 import edu.wpi.first.hal.SimDouble;
 
+/**
+ * A joystick with X and Y axes and a momentary button.
+ */
 public class Joystick extends Control {
 	/**
 	 * Stores the current X axis value.
@@ -186,6 +189,9 @@ public class Joystick extends Control {
 
 	/**
 	 * Sets the X axis value.
+	 *
+	 * @param value
+	 *                The value to set it to [0-1].
 	 */
 	public void setX(double value) {
 		xAxis = value;
@@ -193,6 +199,9 @@ public class Joystick extends Control {
 
 	/**
 	 * Sets the Y axis value.
+	 *
+	 * @param value
+	 *                The value to set it to [0-1].
 	 */
 	public void setY(double value) {
 		yAxis = value;
@@ -200,6 +209,9 @@ public class Joystick extends Control {
 
 	/**
 	 * Sets whether the joystick button is pressed or not.
+	 *
+	 * @param pressed
+	 *                Is the button pressed?
 	 */
 	public void setButton(boolean pressed) {
 		buttonState = pressed;

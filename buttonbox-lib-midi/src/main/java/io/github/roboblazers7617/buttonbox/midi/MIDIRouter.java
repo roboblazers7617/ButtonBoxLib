@@ -6,7 +6,13 @@ import javax.sound.midi.MidiMessage;
 import javax.sound.midi.Receiver;
 import javax.sound.midi.ShortMessage;
 
+/**
+ * {@link Receiver} that routes MIDI messages to the {@link MIDIAddress MIDIAddresses} assigned to it.
+ */
 public class MIDIRouter implements Receiver {
+	/**
+	 * The MIDI addresses to send feedback to.
+	 */
 	private ArrayList<MIDIAddress> addresses = new ArrayList<MIDIAddress>();
 
 	public void send(MidiMessage msg, long timeStamp) {

@@ -13,7 +13,7 @@ public class Control {
 	 * Creates a new Control.
 	 *
 	 * @param id
-	 *                The ID string that the device should use. This will be used as the name for the NetworkTables subtable used by this control.
+	 *                The ID string that the device should use. This will be used as the name for the NetworkTables subtable for this control.
 	 */
 	public Control(String id) {
 		this.id = id;
@@ -49,12 +49,12 @@ public class Control {
 	public void updateHardware() {}
 
 	/**
-	 * Called by the Control class when the NetworkTable is set. Not intended to be called outside of the class.
+	 * Called by the Control class when the NetworkTable is set by {@link #setTable(NetworkTable)}. intended to be called outside of the class.
 	 * <p>
 	 * This should create all of the NetworkTables publishers and subscribers for the inheritting class.
 	 *
 	 * @param table
-	 *                {@link edu.wpi.first.networktables.NetworkTable}
+	 *                The table to use. When called by {@link #setTable(NetworkTable)}, this is a subtable with the ID string as its key.
 	 */
 	public void setupNetworkTables(NetworkTable table) {}
 
@@ -75,12 +75,22 @@ public class Control {
 		return id;
 	}
 
-	/** Gets the NetworkTable used by this Control. */
+	/**
+	 * Gets the NetworkTable used by this Control.
+	 *
+	 * @return
+	 *         The NetworkTable used by this control.
+	 */
 	public NetworkTable getTable() {
 		return table;
 	}
 
-	/** Sets the NetworkTable to be used by this Control. A subtable will be created with the ID string as its key. */
+	/**
+	 * Sets the NetworkTable to be used by this Control. A subtable will be created with the ID string as its key.
+	 *
+	 * @param table
+	 *                The table to use.
+	 */
 	public void setTable(NetworkTable table) {
 		this.table = table.getSubTable(id);
 		setupNetworkTables(this.table);

@@ -2,7 +2,7 @@ package io.github.roboblazers7617.buttonbox.controls;
 
 import io.github.roboblazers7617.buttonbox.Address;
 
-/*
+/**
  * A button controlled by an {@link io.github.roboblazers7617.buttonbox.Address}.
  */
 public class PhysicalButton extends Button {

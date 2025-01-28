@@ -5,13 +5,36 @@ import javax.sound.midi.ShortMessage;
 
 import io.github.roboblazers7617.buttonbox.Address;
 
+/**
+ * An {@link Address} that sends and recieves data over MIDI.
+ */
 public class MIDIAddress implements Address {
+	/**
+	 * MIDIDevice to communicate with.
+	 */
 	public final MIDIDevice midiDevice;
+	/**
+	 * MIDI command to use.
+	 *
+	 * @see
+	 *      ShortMessage
+	 */
 	public final int command;
+	/**
+	 * MIDI channel to communicate on.
+	 */
 	public final int channel;
+	/**
+	 * Data1 to use (note number, CC number, etc.);
+	 */
 	public final int data1;
-	/** Stores the last value sent so duplicate values aren't sent to the address. */
+	/**
+	 * Stores the last value sent so duplicate values aren't sent to the address.
+	 */
 	private int lastData;
+	/**
+	 * Stores the current feedback value.
+	 */
 	private int feedback;
 
 	/**
@@ -104,6 +127,9 @@ public class MIDIAddress implements Address {
 
 	/**
 	 * Sets the feedback for the address. Not intended to be called outside of the {@link MIDIRouter} class.
+	 *
+	 * @param feedback
+	 *                The feedback value to set [0-127].
 	 */
 	public void setFeedbackRaw(int feedback) {
 		this.feedback = feedback;
