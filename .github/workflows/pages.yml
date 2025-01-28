@@ -30,7 +30,7 @@ jobs:
           # Artifact name
           name: javadoc
           # A file, directory or wildcard pattern that describes what to upload
-          path: ./buttonbox-lib/build/docs/javadoc/
+          path: ./buttonbox-lib/build/docs/
 
   build-library:
     runs-on: ubuntu-latest
@@ -84,6 +84,44 @@ jobs:
           name: buttonbox-lib-midi-vendordep
           # A file, directory or wildcard pattern that describes what to upload
           path: ./buttonbox-lib-midi/build/outputs/ButtonBoxLibMIDI.json
+          # The desired behavior if no files are found using the provided path.
+          if-no-files-found: error
+
+  build-docs:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docs
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3' # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          cache-version: 0 # Increment this number if you need to re-download cached gems
+          working-directory: '${{ github.workspace }}/docs'
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        # Outputs to the './_site' directory by default
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          # Artifact name
+          name: docs
+          # A file, directory or wildcard pattern that describes what to upload
+          path: docs/_site/
           # The desired behavior if no files are found using the provided path.
           if-no-files-found: error
 
