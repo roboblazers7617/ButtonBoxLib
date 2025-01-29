@@ -9,6 +9,8 @@ layout: home
 A library for creating NetworkTables-based buttonboxes for FRC.
 {: .fs-6 .fw-300 }
 
+[Demo Video](https://makertube.net/w/mboNXmvm2Q2btwW7M5zY5J){: .btn .btn-purple }
+
 ---
 
 ButtonBoxLib is a library for creating buttonboxes, with support for advanced controls and feedback display.
