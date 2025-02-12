@@ -1,0 +1,25 @@
+apply plugin: 'java'
+
+// Needed so the Javadoc plugin works (for some reason, just putting Java in the plugins block doesn't work)
+subprojects {
+	apply plugin: 'java'
+}
+
+// Projects to include in the Javadoc build
+def exportedProjects = [
+	":buttonbox-lib",
+	":buttonbox-lib-midi",
+]
+Set<Project> javaSubprojects = exportedProjects.collect { project(it) }.findAll { subproject -> subproject.plugins.hasPlugin(JavaPlugin) }
+
+task allJavadoc(type: Javadoc) {
+	description = 'Aggregates Javadoc API documentation of library subprojects.'
+	group = JavaBasePlugin.DOCUMENTATION_GROUP
+	dependsOn javaSubprojects.javadoc
+
+	source javaSubprojects.javadoc.source
+	classpath = files(javaSubprojects.javadoc.classpath)
+	destinationDir = file("${buildDir}/docs/javadoc")
+}
+
+apply from: './javadoc.gradle'

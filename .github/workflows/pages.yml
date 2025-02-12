@@ -22,7 +22,7 @@ jobs:
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
       - name: Build Javadoc with Gradle Wrapper
-        run: ./gradlew javadoc
+        run: ./gradlew allJavadoc
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4.3.1
@@ -30,7 +30,7 @@ jobs:
           # Artifact name
           name: javadoc
           # A file, directory or wildcard pattern that describes what to upload
-          path: ./buttonbox-lib/build/docs/
+          path: ./build/docs/
 
   build-library:
     runs-on: ubuntu-latest
