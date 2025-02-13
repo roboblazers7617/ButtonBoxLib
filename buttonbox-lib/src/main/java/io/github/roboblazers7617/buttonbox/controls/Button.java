@@ -21,11 +21,11 @@ public class Button extends Control {
 	 */
 	private BooleanTopic pressedTopic;
 	/**
-	 * Publisher for {@link pressedTopic}.
+	 * Publisher for {@link #pressedTopic}.
 	 */
 	private BooleanPublisher pressedPub;
 	/**
-	 * Subscriber for {@link pressedTopic}.
+	 * Subscriber for {@link #pressedTopic}.
 	 */
 	private BooleanSubscriber pressedSub;
 
@@ -34,11 +34,11 @@ public class Button extends Control {
 	 */
 	private BooleanTopic stateTopic;
 	/**
-	 * Publisher for {@link stateTopic}.
+	 * Publisher for {@link #stateTopic}.
 	 */
 	private BooleanPublisher statePub;
 	/**
-	 * Subscriber for {@link stateTopic}.
+	 * Subscriber for {@link #stateTopic}.
 	 */
 	private BooleanSubscriber stateSub;
 

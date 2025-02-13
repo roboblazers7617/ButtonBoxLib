@@ -38,11 +38,11 @@ public class Joystick extends Control {
 	 */
 	private DoubleTopic xTopic;
 	/**
-	 * Publisher for {@link xTopic}.
+	 * Publisher for {@link #xTopic}.
 	 */
 	private DoublePublisher xPub;
 	/**
-	 * Subscriber for {@link xTopic}.
+	 * Subscriber for {@link #xTopic}.
 	 */
 	private DoubleSubscriber xSub;
 
@@ -51,11 +51,11 @@ public class Joystick extends Control {
 	 */
 	private DoubleTopic yTopic;
 	/**
-	 * Publisher for {@link yTopic}.
+	 * Publisher for {@link #yTopic}.
 	 */
 	private DoublePublisher yPub;
 	/**
-	 * Subscriber for {@link yTopic}.
+	 * Subscriber for {@link #yTopic}.
 	 */
 	private DoubleSubscriber ySub;
 
@@ -64,11 +64,11 @@ public class Joystick extends Control {
 	 */
 	private BooleanTopic buttonTopic;
 	/**
-	 * Publisher for {@link buttonTopic}.
+	 * Publisher for {@link #buttonTopic}.
 	 */
 	private BooleanPublisher buttonPub;
 	/**
-	 * Subscriber for {@link buttonTopic}.
+	 * Subscriber for {@link #buttonTopic}.
 	 */
 	private BooleanSubscriber buttonSub;
 
@@ -93,7 +93,7 @@ public class Joystick extends Control {
 	 * Create a new Joystick.
 	 *
 	 * @param id
-	 *                The ID string for the Joystick to use.
+	 *            The ID string for the Joystick to use.
 	 * @see io.github.roboblazers7617.buttonbox.Control
 	 */
 	public Joystick(String id) {
@@ -191,7 +191,7 @@ public class Joystick extends Control {
 	 * Sets the X axis value.
 	 *
 	 * @param value
-	 *                The value to set it to [0-1].
+	 *            The value to set it to [0-1].
 	 */
 	public void setX(double value) {
 		xAxis = value;
@@ -201,7 +201,7 @@ public class Joystick extends Control {
 	 * Sets the Y axis value.
 	 *
 	 * @param value
-	 *                The value to set it to [0-1].
+	 *            The value to set it to [0-1].
 	 */
 	public void setY(double value) {
 		yAxis = value;
@@ -211,7 +211,7 @@ public class Joystick extends Control {
 	 * Sets whether the joystick button is pressed or not.
 	 *
 	 * @param pressed
-	 *                Is the button pressed?
+	 *            Is the button pressed?
 	 */
 	public void setButton(boolean pressed) {
 		buttonState = pressed;

@@ -19,11 +19,11 @@ public class Knob extends Control {
 	 */
 	private DoubleTopic positionTopic;
 	/**
-	 * Publisher for {@link positionTopic}.
+	 * Publisher for {@link #positionTopic}.
 	 */
 	private DoublePublisher positionPub;
 	/**
-	 * Subscriber for {@link positionTopic}.
+	 * Subscriber for {@link #positionTopic}.
 	 */
 	private DoubleSubscriber positionSub;
 
