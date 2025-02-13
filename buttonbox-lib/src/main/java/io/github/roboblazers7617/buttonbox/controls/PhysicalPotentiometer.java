@@ -26,7 +26,7 @@ public class PhysicalPotentiometer extends Knob {
 
 	@Override
 	public void updateClient() {
-		positionAddress.getFeedback().ifPresent((feedback) -> setPosition(feedback));
 		super.updateClient();
+		positionAddress.getFeedback().ifPresent((feedback) -> setPosition(feedback));
 	}
 }

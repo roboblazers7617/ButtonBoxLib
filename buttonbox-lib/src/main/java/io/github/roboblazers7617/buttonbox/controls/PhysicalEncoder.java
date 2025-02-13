@@ -48,6 +48,7 @@ public class PhysicalEncoder extends Knob {
 
 	@Override
 	public void updateClient() {
+		super.updateClient();
 		// Get movement since the last update and add it all to the position
 		positionAddress.getFeedbackQueue()
 				.forEach((feedback) -> {
@@ -62,7 +63,6 @@ public class PhysicalEncoder extends Knob {
 							break;
 					}
 				});
-		super.updateClient();
 	}
 
 	/**

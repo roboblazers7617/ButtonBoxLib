@@ -59,7 +59,7 @@ public class Knob extends Control {
 		position = positionSub.get();
 
 		if (position == lastPosition) {
-			position = positionSim.get();
+			setPosition(positionSim.get());
 		} else {
 			positionSim.set(position);
 		}
@@ -67,7 +67,7 @@ public class Knob extends Control {
 
 	@Override
 	public void updateClient() {
-		positionPub.set(position);
+		position = positionSub.get();
 	}
 
 	/**
@@ -81,12 +81,13 @@ public class Knob extends Control {
 	}
 
 	/**
-	 * Sets the position of the Knob.
+	 * Sets the position of the Knob. Published to NetworkTables immediately.
 	 *
 	 * @param position
 	 *            The position to set.
 	 */
 	public void setPosition(double position) {
+		positionPub.set(position);
 		this.position = position;
 	}
 }
