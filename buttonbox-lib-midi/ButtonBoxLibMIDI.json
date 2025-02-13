@@ -5,7 +5,7 @@
 	"frcYear": "2025",
 	"uuid": "4aed0cd1-70c8-424e-8c35-6d0126e4f5a8",
 	"mavenUrls": [
-		"https://roboblazers7617.github.io/ButtonBoxLib/buttonbox-lib-midi"
+		"https://roboblazers7617.github.io/maven-repo/buttonbox-lib-midi"
 	],
 	"jsonUrl": "https://roboblazers7617.github.io/ButtonBoxLib/ButtonBoxLibMIDI.json",
 	"javaDependencies": [
