@@ -14,7 +14,9 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.ShortMessage;
 
 import io.github.roboblazers7617.buttonbox.controls.PhysicalTestControl;
+import io.github.roboblazers7617.buttonbox.controls.PhysicalEncoder.LoopMode;
 import io.github.roboblazers7617.buttonbox.controls.PhysicalButton;
+import io.github.roboblazers7617.buttonbox.controls.PhysicalEncoder;
 import io.github.roboblazers7617.buttonbox.controls.PhysicalJoystick;
 import io.github.roboblazers7617.buttonbox.controls.PhysicalPotentiometer;
 import io.github.roboblazers7617.buttonbox.midi.MIDIUtil;
@@ -71,5 +73,8 @@ public class ButtonBoxBridge {
 		client.addControl(new PhysicalButton("Test Button", new MIDIAddress(midiDevice, ShortMessage.NOTE_ON, 0, 0)));
 		client.addControl(new PhysicalJoystick("Test Joystick", new MIDIAddress(midiDevice, ShortMessage.CONTROL_CHANGE, 0, 1), new MIDIAddress(midiDevice, ShortMessage.CONTROL_CHANGE, 0, 2), new MIDIAddress(midiDevice, ShortMessage.NOTE_ON, 0, 1)));
 		client.addControl(new PhysicalPotentiometer("Test Potentiometer", new MIDIAddress(midiDevice, ShortMessage.CONTROL_CHANGE, 0, 2)));
+		client.addControl(new PhysicalEncoder("Test Encoder", new MIDIAddress(midiDevice, ShortMessage.CONTROL_CHANGE, 0, 3))
+				.setLoopMode(LoopMode.WRAP)
+				.setScale(0.1));
 	}
 }
