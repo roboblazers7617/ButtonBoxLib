@@ -176,7 +176,8 @@ public class MIDIAddress implements Address {
 	 *         Integers between 0 and 127 containing control feedback changes, ordered from least to most recent.
 	 */
 	public List<Integer> getFeedbackQueueRaw() {
+		ArrayList<Integer> queue = new ArrayList<>(feedbackQueue);
 		feedbackQueue.clear();
-		return feedbackQueue;
+		return queue;
 	}
 }
