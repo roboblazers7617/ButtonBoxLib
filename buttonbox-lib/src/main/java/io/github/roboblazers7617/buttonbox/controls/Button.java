@@ -56,7 +56,7 @@ public class Button extends Control {
 	 * Creates a new Button.
 	 *
 	 * @param id
-	 *                The ID string for the Button to use.
+	 *            The ID string for the Button to use.
 	 * @see io.github.roboblazers7617.buttonbox.Control
 	 */
 	public Button(String id) {
@@ -76,41 +76,45 @@ public class Button extends Control {
 
 	@Override
 	public void updateServer() {
-		pressed = pressedSub.get();
+		boolean[] valueQueue = pressedSub.readQueueValues();
 
-		if (pressed == lastPressed) {
-			pressed = pressedSim.get();
-		} else {
-			pressedSim.set(pressed);
+		if (valueQueue.length == 0) {
+			valueQueue[0] = pressedSim.get();
+			pressedPub.set(pressedSim.get());
 		}
 
-		if (pressed != lastPressed) {
-			if (buttonMode == ButtonMode.TOGGLE_RISING || buttonMode == ButtonMode.TOGGLE_FALLING) {
-				if (lastPressed) {
-					if (buttonMode == ButtonMode.TOGGLE_FALLING) {
-						state = !state;
+		if (valueQueue.length > 0) {
+			for (Boolean pressedValue : valueQueue) {
+				pressed = pressedValue;
+
+				if (pressed != lastPressed) {
+					if (buttonMode == ButtonMode.TOGGLE_RISING || buttonMode == ButtonMode.TOGGLE_FALLING) {
+						if (lastPressed) {
+							if (buttonMode == ButtonMode.TOGGLE_FALLING) {
+								state = !state;
+							}
+						} else {
+							if (buttonMode == ButtonMode.TOGGLE_RISING) {
+								state = !state;
+							}
+						}
+					} else if (buttonMode == ButtonMode.PUSH) {
+						state = pressed;
 					}
-				} else {
-					if (buttonMode == ButtonMode.TOGGLE_RISING) {
-						state = !state;
-					}
+
+					lastPressed = pressed;
 				}
-			} else if (buttonMode == ButtonMode.PUSH) {
-				state = pressed;
-			}
 
-			lastPressed = pressed;
+				statePub.set(state);
+			}
 		}
 
-		pressedPub.set(pressed);
-		statePub.set(state);
-
+		pressedSim.set(pressed);
 		stateSim.set(state);
 	}
 
 	@Override
 	public void updateClient() {
-		pressedPub.set(pressed);
 		state = stateSub.get();
 	}
 
@@ -137,12 +141,13 @@ public class Button extends Control {
 	}
 
 	/**
-	 * Sets whether the button is pressed or not.
+	 * Sets whether the button is pressed or not. Published to NetworkTables immediately.
 	 *
 	 * @param pressed
-	 *                Is the button pressed?
+	 *            Is the button pressed?
 	 */
 	public void setPressed(boolean pressed) {
+		pressedPub.set(pressed);
 		this.pressed = pressed;
 	}
 
@@ -160,7 +165,7 @@ public class Button extends Control {
 	 * Sets the button's mode
 	 *
 	 * @param buttonMode
-	 *                mode to set the button to
+	 *            mode to set the button to
 	 */
 	public void setMode(ButtonMode buttonMode) {
 		this.buttonMode = buttonMode;

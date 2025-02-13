@@ -30,6 +30,6 @@ public class PhysicalButton extends Button {
 		} else {
 			address.send(0);
 		}
-		address.getFeedback().ifPresent((feedback) -> setPressed(feedback != 0));
+		address.getFeedbackQueue().forEach((feedback) -> setPressed(feedback != 0));
 	}
 }
