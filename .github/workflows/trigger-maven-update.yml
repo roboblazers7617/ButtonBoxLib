@@ -23,9 +23,10 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           repository: roboblazers7617/maven-repo
           event-type: publish_update
-          client-payload: '{
+          client-payload: |
+            {
               "ref": "${{ github.ref }}",
               "sha": "${{ github.sha }}",
               "libraryName": "ButtonBoxLib",
               "releaseVersion": "${{ github.ref_name }}"
-            }'
+            }
