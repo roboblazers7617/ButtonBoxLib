@@ -166,8 +166,11 @@ public class Button extends Control {
 	 *
 	 * @param buttonMode
 	 *            mode to set the button to
+	 * @return
+	 *         The modified object for method chaining.
 	 */
-	public void setMode(ButtonMode buttonMode) {
+	public Button setMode(ButtonMode buttonMode) {
 		this.buttonMode = buttonMode;
+		return this;
 	}
 }
