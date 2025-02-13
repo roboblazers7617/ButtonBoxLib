@@ -26,7 +26,7 @@ public class TestControl extends Control {
 	 * Creates a new TestControl.
 	 *
 	 * @param id
-	 *                The ID string for the TestControl to use.
+	 *            The ID string for the TestControl to use.
 	 * @see io.github.roboblazers7617.buttonbox.Control
 	 */
 	public TestControl(String id) {
@@ -41,7 +41,7 @@ public class TestControl extends Control {
 
 	@Override
 	public void setupNetworkTables(NetworkTable table) {
-		valueTopic = table.getDoubleTopic("value");
+		valueTopic = table.getDoubleTopic("Value");
 		valuePub = valueTopic.publish();
 		valueSub = valueTopic.subscribe(0.0);
 	}

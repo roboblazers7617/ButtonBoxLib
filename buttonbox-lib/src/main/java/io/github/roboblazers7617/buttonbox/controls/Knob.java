@@ -34,7 +34,7 @@ public class Knob extends Control {
 	 * Creates a new Knob.
 	 *
 	 * @param id
-	 *                The ID string for the Knob to use.
+	 *            The ID string for the Knob to use.
 	 * @see io.github.roboblazers7617.buttonbox.Control
 	 */
 	public Knob(String id) {
@@ -49,7 +49,7 @@ public class Knob extends Control {
 
 	@Override
 	public void setupNetworkTables(NetworkTable table) {
-		positionTopic = table.getDoubleTopic("position");
+		positionTopic = table.getDoubleTopic("Position");
 		positionPub = positionTopic.publish();
 		positionSub = positionTopic.subscribe(0.0);
 	}
@@ -84,7 +84,7 @@ public class Knob extends Control {
 	 * Sets the position of the Knob.
 	 *
 	 * @param position
-	 *                The position to set.
+	 *            The position to set.
 	 */
 	public void setPosition(double position) {
 		this.position = position;
