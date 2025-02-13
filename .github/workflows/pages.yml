@@ -2,6 +2,9 @@ name: Build and deploy to GitHub Pages
 
 on: [push, pull_request]
 
+env:
+  releaseVersion: ${{ github.ref_name }}
+
 jobs:
   build-javadoc:
     runs-on: ubuntu-latest
