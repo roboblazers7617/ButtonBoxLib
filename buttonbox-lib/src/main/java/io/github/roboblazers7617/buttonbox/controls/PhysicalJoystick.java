@@ -23,13 +23,13 @@ public class PhysicalJoystick extends Joystick {
 	 * Creates a new PhysicalJoystick.
 	 *
 	 * @param id
-	 *                The ID string for the PhysicalJoystick to use.
+	 *            The ID string for the PhysicalJoystick to use.
 	 * @param xAddress
-	 *                The Address used for the X axis.
+	 *            The Address used for the X axis.
 	 * @param yAddress
-	 *                The Address used for the Y axis.
+	 *            The Address used for the Y axis.
 	 * @param buttonAddress
-	 *                The Address used for the Button.
+	 *            The Address used for the Button.
 	 */
 	public PhysicalJoystick(String id, Address xAddress, Address yAddress, Address buttonAddress) {
 		super(id);
@@ -40,9 +40,9 @@ public class PhysicalJoystick extends Joystick {
 
 	@Override
 	public void updateClient() {
-		setX(xAddress.getFeedback());
-		setY(yAddress.getFeedback());
-		setButton(buttonAddress.getFeedback() != 0);
+		xAddress.getFeedback().ifPresent((feedback) -> setX(feedback));
+		yAddress.getFeedback().ifPresent((feedback) -> setY(feedback));
+		buttonAddress.getFeedback().ifPresent((feedback) -> setButton(feedback != 0));
 		super.updateClient();
 	}
 }

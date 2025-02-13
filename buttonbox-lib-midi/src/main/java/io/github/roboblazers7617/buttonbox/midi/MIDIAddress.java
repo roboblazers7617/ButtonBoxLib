@@ -1,5 +1,7 @@
 package io.github.roboblazers7617.buttonbox.midi;
 
+import java.util.Optional;
+
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
 
@@ -34,20 +36,21 @@ public class MIDIAddress implements Address {
 	private int lastData;
 	/**
 	 * Stores the current feedback value.
+	 * Empty if no feedback has been recieved.
 	 */
-	private int feedback;
+	private Optional<Integer> feedback;
 
 	/**
 	 * Creates a new MIDIAddress with the specified command, channel, and data1.
 	 *
 	 * @param midiDevice
-	 *                MIDIDevice to use.
+	 *            MIDIDevice to use.
 	 * @param command
-	 *                MIDI command to use.
+	 *            MIDI command to use.
 	 * @param channel
-	 *                MIDI channel to use.
+	 *            MIDI channel to use.
 	 * @param data1
-	 *                Data1 to use (note number, CC number, etc.).
+	 *            Data1 to use (note number, CC number, etc.).
 	 */
 	public MIDIAddress(MIDIDevice midiDevice, int command, int channel, int data1) {
 		this.midiDevice = midiDevice;
@@ -96,7 +99,7 @@ public class MIDIAddress implements Address {
 	 * Sends raw data to the address.
 	 *
 	 * @param data
-	 *                Integer between 0 and 127 to send.
+	 *            Integer between 0 and 127 to send.
 	 */
 	public void sendRaw(int data) {
 		if (data != lastData) {
@@ -111,8 +114,12 @@ public class MIDIAddress implements Address {
 		}
 	}
 
-	public double getFeedback() {
-		return feedback / 127.0;
+	public Optional<Double> getFeedback() {
+		if (feedback.isPresent()) {
+			return Optional.of(feedback.get() / 127.0);
+		} else {
+			return Optional.empty();
+		}
 	}
 
 	/**
@@ -120,8 +127,9 @@ public class MIDIAddress implements Address {
 	 *
 	 * @return
 	 *         Integer between 0 and 127 containing control feedback.
+	 *         Empty if no feedback has been recieved.
 	 */
-	public int getFeedbackRaw() {
+	public Optional<Integer> getFeedbackRaw() {
 		return feedback;
 	}
 
@@ -129,9 +137,9 @@ public class MIDIAddress implements Address {
 	 * Sets the feedback for the address. Not intended to be called outside of the {@link MIDIRouter} class.
 	 *
 	 * @param feedback
-	 *                The feedback value to set [0-127].
+	 *            The feedback value to set [0-127].
 	 */
 	public void setFeedbackRaw(int feedback) {
-		this.feedback = feedback;
+		this.feedback = Optional.of(feedback);
 	}
 }

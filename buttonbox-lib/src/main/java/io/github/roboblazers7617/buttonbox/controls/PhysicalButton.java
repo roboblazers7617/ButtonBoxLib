@@ -12,9 +12,9 @@ public class PhysicalButton extends Button {
 	 * Creates a new PhysicalButton.
 	 *
 	 * @param id
-	 *                The ID string for the PhysicalButton to use.
+	 *            The ID string for the PhysicalButton to use.
 	 * @param buttonAddress
-	 *                The Address for the PhysicalButton to use.
+	 *            The Address for the PhysicalButton to use.
 	 * @see io.github.roboblazers7617.buttonbox.Control
 	 */
 	public PhysicalButton(String id, Address buttonAddress) {
@@ -30,6 +30,6 @@ public class PhysicalButton extends Button {
 		} else {
 			address.send(0);
 		}
-		setPressed(address.getFeedback() != 0);
+		address.getFeedback().ifPresent((feedback) -> setPressed(feedback != 0));
 	}
 }

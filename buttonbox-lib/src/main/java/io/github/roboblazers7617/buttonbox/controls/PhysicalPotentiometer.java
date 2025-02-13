@@ -15,9 +15,9 @@ public class PhysicalPotentiometer extends Knob {
 	 * Creates a new PhysicalPotentiometer.
 	 *
 	 * @param id
-	 *                The ID string for the PhysicalPotentiometer to use.
+	 *            The ID string for the PhysicalPotentiometer to use.
 	 * @param positionAddress
-	 *                The Address used for the position.
+	 *            The Address used for the position.
 	 */
 	public PhysicalPotentiometer(String id, Address positionAddress) {
 		super(id);
@@ -26,7 +26,7 @@ public class PhysicalPotentiometer extends Knob {
 
 	@Override
 	public void updateClient() {
-		setPosition(positionAddress.getFeedback());
+		positionAddress.getFeedback().ifPresent((feedback) -> setPosition(feedback));
 		super.updateClient();
 	}
 }
