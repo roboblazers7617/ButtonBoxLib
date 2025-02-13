@@ -1,6 +1,10 @@
 package io.github.roboblazers7617.buttonbox.midi;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
@@ -39,6 +43,11 @@ public class MIDIAddress implements Address {
 	 * Empty if no feedback has been recieved.
 	 */
 	private Optional<Integer> feedback;
+	/**
+	 * Stores the historical feedback values.
+	 * Cleared when calling {@link #getFeedbackQueue()}.
+	 */
+	private ArrayList<Integer> feedbackQueue;
 
 	/**
 	 * Creates a new MIDIAddress with the specified command, channel, and data1.
@@ -57,6 +66,9 @@ public class MIDIAddress implements Address {
 		this.command = command;
 		this.channel = channel;
 		this.data1 = data1;
+
+		feedbackQueue = new ArrayList<>();
+		feedbackQueue.ensureCapacity(100);
 
 		midiDevice.getRouter().addAddress(this);
 	}
@@ -141,5 +153,28 @@ public class MIDIAddress implements Address {
 	 */
 	public void setFeedbackRaw(int feedback) {
 		this.feedback = Optional.of(feedback);
+		// TOOD: Make this size configurable
+		if (feedbackQueue.size() >= 100) {
+			feedbackQueue.remove(0);
+		}
+		feedbackQueue.add(feedback);
+	}
+
+	public List<Double> getFeedbackQueue() {
+		return getFeedbackQueueRaw().stream()
+				.flatMapToDouble((value) -> DoubleStream.of(value * 127.0))
+				.boxed()
+				.collect(Collectors.toList());
+	}
+
+	/**
+	 * Gets changes to the feedback from the address, and clears the queue of changes.
+	 *
+	 * @return
+	 *         Integers between 0 and 127 containing control feedback changes, ordered from least to most recent.
+	 */
+	public List<Integer> getFeedbackQueueRaw() {
+		feedbackQueue.clear();
+		return feedbackQueue;
 	}
 }

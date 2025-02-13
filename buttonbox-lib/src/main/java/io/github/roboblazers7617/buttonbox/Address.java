@@ -1,5 +1,6 @@
 package io.github.roboblazers7617.buttonbox;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,4 +23,13 @@ public interface Address {
 	 *         Empty if no feedback has been recieved.
 	 */
 	public Optional<Double> getFeedback();
+
+	/**
+	 * Gets the changes to the feedback from the address since the last call to this method.
+	 *
+	 * @return
+	 *         Doubles between 0 and 1 containing control feedback changes, ordered from least to most recent.
+	 *         Empty if no feedback has been recieved.
+	 */
+	public List<Double> getFeedbackQueue();
 }
