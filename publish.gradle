@@ -3,7 +3,8 @@ apply plugin: 'maven-publish'
 ext.licenseFile = files("$rootDir/LICENSE.md")
 
 def pubVersion = System.getenv("releaseVersion") ?: "test"
-def releasesRepoUrl = "$rootDir/repos/${project.property("vendordepPublish.releasesRepoName")}"
+def repoUrl = System.getenv("mavenRepo") ?: "$rootDir/repos"
+def releasesRepoUrl = "$repoUrl/${project.property("vendordepPublish.releasesRepoName")}"
 def outputsFolder = file("$buildDir/outputs")
 def versionFile = file("$outputsFolder/version.txt")
 def vendordepFile = file("$outputsFolder/${project.property("vendordepPublish.vendordepFileName")}")
