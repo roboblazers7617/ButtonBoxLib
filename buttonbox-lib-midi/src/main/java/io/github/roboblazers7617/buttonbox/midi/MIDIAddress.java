@@ -164,7 +164,7 @@ public class MIDIAddress implements Address {
 
 	public List<Double> getFeedbackQueue() {
 		return getFeedbackQueueRaw().stream()
-				.flatMapToDouble((value) -> DoubleStream.of(value * 127.0))
+				.flatMapToDouble((value) -> DoubleStream.of(value / 127.0))
 				.boxed()
 				.collect(Collectors.toList());
 	}
