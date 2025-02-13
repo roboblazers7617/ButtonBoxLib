@@ -14,8 +14,17 @@ import edu.wpi.first.hal.SimDouble;
  * A knob, fader, encoder, or any other sort of analog control.
  */
 public class Knob extends Control {
+	/**
+	 * Used to communicate the position of the knob.
+	 */
 	private DoubleTopic positionTopic;
+	/**
+	 * Publisher for {@link positionTopic}.
+	 */
 	private DoublePublisher positionPub;
+	/**
+	 * Subscriber for {@link positionTopic}.
+	 */
 	private DoubleSubscriber positionSub;
 
 	/**
@@ -27,7 +36,13 @@ public class Knob extends Control {
 	 */
 	private double lastPosition;
 
+	/**
+	 * Simulation device used to simulate the knob.
+	 */
 	private SimDevice simDevice;
+	/**
+	 * Simulation object for the knob's position.
+	 */
 	private SimDouble positionSim;
 
 	/**
