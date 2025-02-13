@@ -61,7 +61,6 @@ public class PhysicalEncoder extends Knob {
 							setPosition(MathUtil.inputModulus(newPosition, 0.0, 1.0));
 							break;
 					}
-					System.out.println(getPosition());
 				});
 		super.updateClient();
 	}
