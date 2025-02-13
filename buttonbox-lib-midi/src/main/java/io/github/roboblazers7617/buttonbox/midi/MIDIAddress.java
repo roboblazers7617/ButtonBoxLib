@@ -67,6 +67,8 @@ public class MIDIAddress implements Address {
 		this.channel = channel;
 		this.data1 = data1;
 
+		feedback = Optional.empty();
+
 		feedbackQueue = new ArrayList<>();
 		feedbackQueue.ensureCapacity(100);
 
