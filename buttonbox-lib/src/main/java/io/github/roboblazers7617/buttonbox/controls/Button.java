@@ -16,28 +16,61 @@ import edu.wpi.first.hal.SimBoolean;
  * A push button with configurable feedback. Intended for use with a momentary switch that is lit by a controllable LED.
  */
 public class Button extends Control {
-	/** Used to communicate whether the physical button is pressed or not. */
+	/**
+	 * Used to communicate whether the physical button is pressed or not.
+	 */
 	private BooleanTopic pressedTopic;
+	/**
+	 * Publisher for {@link pressedTopic}.
+	 */
 	private BooleanPublisher pressedPub;
+	/**
+	 * Subscriber for {@link pressedTopic}.
+	 */
 	private BooleanSubscriber pressedSub;
 
-	/** Used to communicate whether the button is active or not. */
+	/**
+	 * Used to communicate whether the button is active or not.
+	 */
 	private BooleanTopic stateTopic;
+	/**
+	 * Publisher for {@link stateTopic}.
+	 */
 	private BooleanPublisher statePub;
+	/**
+	 * Subscriber for {@link stateTopic}.
+	 */
 	private BooleanSubscriber stateSub;
 
-	/** Stores whether the physical button is pressed or not. */
+	/**
+	 * Stores whether the physical button is pressed or not.
+	 */
 	private boolean pressed;
-	/** Stores whether the physical button was pressed or not on the last update. Used to determine rising/falling edges. */
+	/**
+	 * Stores whether the physical button was pressed or not on the last update. Used to determine rising/falling edges.
+	 */
 	private boolean lastPressed;
-	/** Stores the state of the button on the server, which is updated according to the button's mode. */
+	/**
+	 * Stores the state of the button on the server, which is updated according to the button's mode.
+	 */
 	private boolean state;
 
-	/** Stores the selected {@link ButtonMode}. */
+	/**
+	 * Stores the selected {@link ButtonMode}.
+	 */
 	private ButtonMode buttonMode = ButtonMode.PUSH;
 
+	/**
+	 * Simulation device used to simulate the button.
+	 */
 	private SimDevice simDevice;
+	/**
+	 * Simulation object for the physical button's pressed state.
+	 */
 	private SimBoolean pressedSim;
+	/**
+	 * Simulation object for the button's feedback state.
+	 */
 	private SimBoolean stateSim;
 
 	/**
