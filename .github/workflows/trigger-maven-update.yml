@@ -16,6 +16,8 @@ jobs:
         with:
           app-id: ${{ vars.BLAZER_BOT_APP_ID }}
           private-key: ${{ secrets.BLAZER_BOT_PRIVATE_KEY }}
+          # Set the owner, so the token can be used in all repositories
+          owner: ${{ github.repository_owner }}
 
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
