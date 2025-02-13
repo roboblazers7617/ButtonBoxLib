@@ -62,6 +62,7 @@ public class Knob extends Control {
 			setPosition(positionSim.get());
 		} else {
 			positionSim.set(position);
+			lastPosition = position;
 		}
 	}
 
