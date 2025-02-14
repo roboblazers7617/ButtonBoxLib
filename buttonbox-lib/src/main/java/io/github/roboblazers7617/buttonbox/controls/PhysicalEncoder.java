@@ -1,7 +1,7 @@
 package io.github.roboblazers7617.buttonbox.controls;
 
 import edu.wpi.first.math.MathUtil;
-import io.github.roboblazers7617.buttonbox.Address;
+import io.github.roboblazers7617.buttonbox.addresses.DoubleAddress;
 
 /**
  * A Knob controlled through Addresses by an Encoder that outputs relative
@@ -11,7 +11,7 @@ public class PhysicalEncoder extends Knob {
 	/**
 	 * Address used for position data.
 	 */
-	private final Address positionAddress;
+	private final DoubleAddress positionAddress;
 	/**
 	 * Loop mode of the encoder.
 	 */
@@ -41,7 +41,7 @@ public class PhysicalEncoder extends Knob {
 	 *            A value of 0.5 is the center, values above that are movement in the positive
 	 *            direction, and values below that are movement in the negative direction.
 	 */
-	public PhysicalEncoder(String id, Address positionAddress) {
+	public PhysicalEncoder(String id, DoubleAddress positionAddress) {
 		super(id);
 		this.positionAddress = positionAddress;
 	}

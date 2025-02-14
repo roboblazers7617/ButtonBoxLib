@@ -9,12 +9,12 @@ import java.util.stream.DoubleStream;
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
 
-import io.github.roboblazers7617.buttonbox.Address;
+import io.github.roboblazers7617.buttonbox.addresses.DoubleAddress;
 
 /**
  * An {@link Address} that sends and recieves data over MIDI.
  */
-public class MIDIAddress implements Address {
+public class MIDIAddress implements DoubleAddress {
 	/**
 	 * MIDIDevice to communicate with.
 	 */
@@ -105,7 +105,7 @@ public class MIDIAddress implements Address {
 		return data1;
 	}
 
-	public void send(double data) {
+	public void send(Double data) {
 		sendRaw((int) (data * 127));
 	}
 

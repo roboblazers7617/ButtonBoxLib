@@ -1,6 +1,6 @@
 package io.github.roboblazers7617.buttonbox.controls;
 
-import io.github.roboblazers7617.buttonbox.Address;
+import io.github.roboblazers7617.buttonbox.addresses.DoubleAddress;
 
 /**
  * A test {@link io.github.roboblazers7617.buttonbox.Control} that reads the data published by a {@link io.github.roboblazers7617.buttonbox.controls.TestControl} and outputs it to an {@link io.github.roboblazers7617.buttonbox.Address}.
@@ -9,7 +9,7 @@ public class PhysicalTestControl extends TestControl {
 	/**
 	 * Address used to output the current value.
 	 */
-	private final Address address;
+	private final DoubleAddress address;
 
 	/**
 	 * Creates a new PhysicalTestControl.
@@ -20,7 +20,7 @@ public class PhysicalTestControl extends TestControl {
 	 *            The address to send messages to.
 	 * @see io.github.roboblazers7617.buttonbox.Control
 	 */
-	public PhysicalTestControl(String id, Address address) {
+	public PhysicalTestControl(String id, DoubleAddress address) {
 		super(id);
 		this.address = address;
 	}
