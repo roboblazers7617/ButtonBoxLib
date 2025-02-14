@@ -12,7 +12,7 @@ import javax.sound.midi.ShortMessage;
 import io.github.roboblazers7617.buttonbox.addresses.DoubleAddress;
 
 /**
- * An {@link Address} that sends and recieves data over MIDI.
+ * An {@link DoubleAddress} that sends and recieves data over MIDI.
  */
 public class MIDIAddress implements DoubleAddress {
 	/**
