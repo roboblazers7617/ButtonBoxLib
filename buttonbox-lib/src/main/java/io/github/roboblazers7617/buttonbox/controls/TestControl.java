@@ -14,12 +14,31 @@ import edu.wpi.first.hal.SimDouble;
  * A test {@link io.github.roboblazers7617.buttonbox.Control} that sends a float that is increased every time server feedback is updated and outputs it to the client TTY.
  */
 public class TestControl extends Control {
+	/**
+	 * Used to communicate the current value.
+	 */
 	private DoubleTopic valueTopic;
+	/**
+	 * Publisher for {@link #valueTopic}.
+	 */
 	private DoublePublisher valuePub;
+	/**
+	 * Subscriber for {@link #valueTopic}.
+	 */
 	private DoubleSubscriber valueSub;
+
+	/**
+	 * The current value of the TestControl.
+	 */
 	private double value = 0;
 
+	/**
+	 * Simulation device used to simulate the TestControl.
+	 */
 	private SimDevice simDevice;
+	/**
+	 * Simulation object for the value.
+	 */
 	private SimDouble valueSim;
 
 	/**
@@ -70,6 +89,8 @@ public class TestControl extends Control {
 	}
 
 	/**
+	 * Gets the current value of the TestControl.
+	 *
 	 * @return
 	 *         The current value of the TestControl.
 	 */

@@ -31,7 +31,7 @@ public class MIDIAddress implements Address {
 	 */
 	public final int channel;
 	/**
-	 * Data1 to use (note number, CC number, etc.);
+	 * Data1 to use (note number, CC number, etc).
 	 */
 	public final int data1;
 	/**

@@ -10,21 +10,36 @@ import javax.sound.midi.Transmitter;
  * A wrapper for {@link MidiDevice MidiDevices} that combines recieving and transmitting objects into one object.
  */
 public class MIDIDevice {
+	/**
+	 * Device used to recieve messages.
+	 */
 	private final MidiDevice rxDevice;
+	/**
+	 * Device used to transmit messages.
+	 */
 	private final MidiDevice txDevice;
+	/**
+	 * Reciever for the {@link #rxDevice}.
+	 */
 	private final Receiver receiver;
+	/**
+	 * Transmitter for the {@link #txDevice}.
+	 */
 	private final Transmitter transmitter;
+	/**
+	 * MIDIRouter used to route messages from this device to its associated Addresses.
+	 */
 	private final MIDIRouter router;
 
 	/**
 	 * Creates a MIDIDevice.
 	 *
 	 * @param rxDevice
-	 *                {@link MidiDevice} to use for receiving messages
+	 *            {@link MidiDevice} to use for receiving messages
 	 * @param txDevice
-	 *                {@link MidiDevice} to use for transmitting messages
+	 *            {@link MidiDevice} to use for transmitting messages
 	 * @throws MidiUnavailableException
-	 *                 Thrown when the rxDevice or txDevice is unavailable.
+	 *             Thrown when the rxDevice or txDevice is unavailable.
 	 * @implNote
 	 *           Provided devices must already be opened.
 	 */
@@ -42,7 +57,7 @@ public class MIDIDevice {
 	 * Sends a message to this device.
 	 *
 	 * @param message
-	 *                The message to send.
+	 *            The message to send.
 	 */
 	public void send(ShortMessage message) {
 		receiver.send(message, -1);

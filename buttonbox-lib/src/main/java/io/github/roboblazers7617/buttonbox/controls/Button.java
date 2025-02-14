@@ -164,10 +164,10 @@ public class Button extends Control {
 	}
 
 	/**
-	 * Gets button state
+	 * Gets the button's state.
 	 *
 	 * @return
-	 *         button state (true = pushed, false = released)
+	 *         Button state (true = pushed, false = released).
 	 */
 	public boolean getState() {
 		return state;
@@ -185,20 +185,20 @@ public class Button extends Control {
 	}
 
 	/**
-	 * Get a trigger for the button
+	 * Get a trigger for the button.
 	 *
 	 * @return
-	 *         trigger
+	 *         Trigger.
 	 */
 	public Trigger getTrigger() {
 		return new Trigger(() -> state);
 	}
 
 	/**
-	 * Sets the button's mode
+	 * Sets the button's mode.
 	 *
 	 * @param buttonMode
-	 *            mode to set the button to
+	 *            Mode to set the button to.
 	 * @return
 	 *         The modified object for method chaining.
 	 */

@@ -6,7 +6,13 @@ import edu.wpi.first.networktables.NetworkTable;
  * Class for buttonbox controls that handles feedback and NetworkTables.
  */
 public class Control {
+	/**
+	 * NetworkTable used by this control.
+	 */
 	private NetworkTable table;
+	/**
+	 * ID string of this control. This is used as the name for the NetworkTable for this control.
+	 */
 	private String id;
 
 	/**

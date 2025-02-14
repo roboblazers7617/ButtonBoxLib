@@ -6,6 +6,9 @@ import io.github.roboblazers7617.buttonbox.Address;
  * A button controlled by an {@link io.github.roboblazers7617.buttonbox.Address}.
  */
 public class PhysicalButton extends Button {
+	/**
+	 * Address used for the button state.
+	 */
 	private final Address address;
 
 	/**
