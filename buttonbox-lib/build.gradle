@@ -4,6 +4,7 @@ plugins {
 	id 'com.github.johnrengelman.shadow' version '8.1.1'
 	id "edu.wpi.first.GradleRIO" version "2025.2.1"
 	id 'edu.wpi.first.WpilibTools' version '1.3.0'
+	id 'net.apollofops.first.VendorTools' version "2025.1.1"
 }
 
 wpilibTools.deps.wpilibVersion = wpi.versions.wpilibVersion.get()
@@ -51,5 +52,12 @@ shadowJar {
 	archiveClassifier.set(wpilibTools.currentPlatform.platformName)
 }
 
+vendordep {
+	baseArtifactId = "ButtonBoxLib"
+	artifactGroupId = "io.github.roboblazers7617.buttonbox"
+	vendordepJsonFile = file("ButtonBoxLib.json")
+	releasesRepoName = "buttonbox-lib"
+	enableJava = true
+}
+
 apply from: '../javadoc.gradle'
-apply from: '../publish.gradle'

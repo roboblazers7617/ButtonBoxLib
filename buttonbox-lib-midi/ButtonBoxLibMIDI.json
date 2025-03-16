@@ -10,8 +10,8 @@
 	"jsonUrl": "https://roboblazers7617.github.io/ButtonBoxLib/ButtonBoxLibMIDI.json",
 	"javaDependencies": [
 		{
-			"groupId": "io.github.roboblazers7617.buttonbox.midi",
-			"artifactId": "ButtonBoxLibMIDI-java",
+			"groupId": "${groupId}",
+			"artifactId": "${artifactId}-java",
 			"version": "${version}"
 		}
 	],

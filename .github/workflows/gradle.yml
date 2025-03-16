@@ -32,6 +32,14 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: ./buttonbox-lib/build/libs
 
+      - name: Upload MIDI library artifact
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          # Artifact name
+          name: library-midi
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ./buttonbox-lib-midi/build/libs
+
       - name: Upload bridge artifact
         uses: actions/upload-artifact@v4.3.1
         with:
