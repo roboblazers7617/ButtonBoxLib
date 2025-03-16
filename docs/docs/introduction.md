@@ -19,4 +19,4 @@ There's a few key classes and interfaces which are used throughout the library.
 
 ### Addresses
 
-[Addresses]({{ site.javadoc_url }}/io/github/roboblazers7617/buttonbox/Address.html) handle the communication with actual hardware. The Address interface represents a single double in the range \[0-1\] which can be sent and received to and from the hardware.
+[Addresses]({{ site.javadoc_url }}/io/github/roboblazers7617/buttonbox/Address.html) handle the communication with actual hardware. The Address interface represents a single value with a generic type which can be sent and received to and from the hardware. The most common address used is the [DobuleAddress]({{ site.javadoc_url }}/io/github/roboblazers7617/buttonbox/addresses/DoubleAddress.html), which represents a single double in the range \[0-1\] and is commonly also used to represent Booleans and other similar types.
