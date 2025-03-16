@@ -34,6 +34,8 @@ jobs:
           name: buttonbox-lib-outputs-java
           # A file, directory or wildcard pattern that describes what to upload
           path: ./buttonbox-lib/build/allOutputs
+          # The desired behavior if no files are found using the provided path.
+          if-no-files-found: error
 
       - name: Upload MIDI library artifact
         uses: actions/upload-artifact@v4.3.1
@@ -42,6 +44,8 @@ jobs:
           name: buttonbox-lib-midi-outputs-java
           # A file, directory or wildcard pattern that describes what to upload
           path: ./buttonbox-lib-midi/build/allOutputs
+          # The desired behavior if no files are found using the provided path.
+          if-no-files-found: error
 
   update-maven:
     needs: [build-java]
