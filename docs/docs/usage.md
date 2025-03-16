@@ -244,7 +244,7 @@ public class ButtonBoxBridge {
 
 First, we initialize the program and create a NetworkTableInstance. I won't go into how to do any of this here, since that's not really a part of this library (take a look at WPILib's docs, particularly the page on [creating a NetworkTables client](https://docs.wpilib.org/en/stable/docs/software/networktables/client-side-program.html), if you want to learn more about how that all works). The code in the sample above should work fine for almost any use case.
 
-Then, we create a MIDIDevice. This is the object that will handle the MIDI communication with the actual hardware. We use the MIDIUtil class to do this, which contains a helper function that iterates through all the connected MIDI devices and returns the first one with the name you give.
+Then, we create a [MIDIDevice]({{ site.javadoc_url }}/io/github/roboblazers7617/buttonbox/midi/MIDIDevice.html). This is the object that will handle the MIDI communication with the actual hardware. We use the [MIDIUtil]({{ site.javadoc_url }}/io/github/roboblazers7617/buttonbox/midi/MIDIUtil.html) class to do this, which contains a helper function that iterates through all the connected MIDI devices and returns the first one with the name you give.
 
 ```java
 Optional<MIDIDevice> midiDevice = MIDIUtil.getDeviceByName("Your Midi Device Name");
@@ -256,7 +256,7 @@ There is also another version of this method that you can give both a transmitte
 Optional<MIDIDevice> midiDevice = MIDIUtil.getDeviceByName("Your Midi Reciever Device Name", "Your Midi Transmitter Device Name");
 ```
 
-Now, we create a ButtonBoxClient. This can actually be done before setting up the MIDIDevice, since it doesn't depend on it, but for this example we'll just do it after.
+Now, we create a [ButtonBoxClient]({{ site.javadoc_url }}/io/github/roboblazers7617/buttonbox/ButtonBoxClient.html). This can actually be done before setting up the MIDIDevice, since it doesn't depend on it, but for this example we'll just do it after.
 
 ```java
 ButtonBoxClient client = new ButtonBoxClient(inst);
