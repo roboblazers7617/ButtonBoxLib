@@ -1,5 +1,7 @@
 package io.github.roboblazers7617.buttonbox;
 
+import edu.wpi.first.math.MathUtil;
+
 /**
  * Class that represents an RGB color. This is designed to be higher-performance than Java and
  * WPILib's Color classes, since the same object can be reused multiple times.
@@ -93,6 +95,25 @@ public class Color {
 		this.red = Integer.valueOf(hexString.substring(1, 3), 16) / 255.0;
 		this.green = Integer.valueOf(hexString.substring(3, 5), 16) / 255.0;
 		this.blue = Integer.valueOf(hexString.substring(5, 7), 16) / 255.0;
+
+		return this;
+	}
+
+	/**
+	 * Scales the brightness of the color. Just multiplies the color elements by the scalar instead of
+	 * doing fancy HSV stuff, so the colors might not look perfect.
+	 *
+	 * @apiNote
+	 *          Color elements are clamped to [0-1].
+	 * @param brightness
+	 *            The scalar to set. Usually [0-1], but setting it larger will make the color brighter.
+	 * @return
+	 *         The modified object.
+	 */
+	public Color scaleBrightness(double brightness) {
+		red = MathUtil.clamp(red * brightness, 0, 1);
+		green = MathUtil.clamp(green * brightness, 0, 1);
+		blue = MathUtil.clamp(blue * brightness, 0, 1);
 
 		return this;
 	}
