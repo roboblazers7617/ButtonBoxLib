@@ -26,7 +26,7 @@ public class LEDMulticolor extends LED {
 	/**
 	 * Stores the current color of the LED.
 	 */
-	private Color color;
+	private Color color = new Color();
 
 	/**
 	 * Creates a new LED.
