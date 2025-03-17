@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           # Artifact name
-          name: buttonbox-lib-outputs-java
+          name: outputs-buttonbox-lib-java
           # A file, directory or wildcard pattern that describes what to upload
           path: ./buttonbox-lib/build/allOutputs
           # The desired behavior if no files are found using the provided path.
@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           # Artifact name
-          name: buttonbox-lib-midi-outputs-java
+          name: outputs-buttonbox-lib-midi-java
           # A file, directory or wildcard pattern that describes what to upload
           path: ./buttonbox-lib-midi/build/allOutputs
           # The desired behavior if no files are found using the provided path.
@@ -64,16 +64,9 @@ jobs:
           # Set the owner, so the token can be used in all repositories
           owner: ${{ github.repository_owner }}
 
-      - name: Trigger update - ButtonBoxLib
-        uses: CoffeeCoder1/VendorTools/.github/actions/trigger-maven-update@2025.1.1
+      - name: Trigger update
+        uses: CoffeeCoder1/VendorTools/.github/actions/trigger-maven-update@2025.1.2
         with:
           github-token: ${{ steps.app-token.outputs.token }}
           repository-name: ${{ github.repository_owner }}/maven-repo
-          artifact-pattern: buttonbox-lib-outputs-*
-
-      - name: Trigger update - ButtonBoxLibMIDI
-        uses: CoffeeCoder1/VendorTools/.github/actions/trigger-maven-update@2025.1.1
-        with:
-          github-token: ${{ steps.app-token.outputs.token }}
-          repository-name: ${{ github.repository_owner }}/maven-repo
-          artifact-pattern: buttonbox-lib-midi-outputs-*
+          artifact-pattern: outputs-*
