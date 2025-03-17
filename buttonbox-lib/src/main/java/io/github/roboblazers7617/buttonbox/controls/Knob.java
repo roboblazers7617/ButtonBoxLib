@@ -32,7 +32,8 @@ public class Knob extends Control {
 	 */
 	private double position;
 	/**
-	 * Stores where the physical Knob was in the last update. Used to determine whether simulation values should be used or not.
+	 * Stores where the physical Knob was in the last update. Used to determine whether simulation
+	 * values should be used or not.
 	 */
 	private double lastPosition;
 

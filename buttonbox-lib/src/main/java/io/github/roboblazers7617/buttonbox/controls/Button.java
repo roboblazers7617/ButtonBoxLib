@@ -13,7 +13,8 @@ import edu.wpi.first.hal.SimDevice;
 import edu.wpi.first.hal.SimBoolean;
 
 /**
- * A push button with configurable feedback. Intended for use with a momentary switch that is lit by a controllable LED.
+ * A push button with configurable feedback. Intended for use with a momentary switch that is lit by
+ * a controllable LED.
  */
 public class Button extends Control {
 	/**
@@ -47,7 +48,8 @@ public class Button extends Control {
 	 */
 	private boolean pressed;
 	/**
-	 * Stores whether the physical button was pressed or not on the last update. Used to determine rising/falling edges.
+	 * Stores whether the physical button was pressed or not on the last update. Used to determine
+	 * rising/falling edges.
 	 */
 	private boolean lastPressed;
 	/**

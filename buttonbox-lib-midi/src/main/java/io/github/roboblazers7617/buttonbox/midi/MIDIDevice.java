@@ -7,7 +7,8 @@ import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Transmitter;
 
 /**
- * A wrapper for {@link MidiDevice MidiDevices} that combines recieving and transmitting objects into one object.
+ * A wrapper for {@link MidiDevice MidiDevices} that combines recieving and transmitting objects
+ * into one object.
  */
 public class MIDIDevice {
 	/**

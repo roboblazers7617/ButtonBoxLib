@@ -3,7 +3,9 @@ package io.github.roboblazers7617.buttonbox.controls;
 import io.github.roboblazers7617.buttonbox.addresses.DoubleAddress;
 
 /**
- * A test {@link io.github.roboblazers7617.buttonbox.Control} that reads the data published by a {@link io.github.roboblazers7617.buttonbox.controls.TestControl} and outputs it to an {@link io.github.roboblazers7617.buttonbox.Address}.
+ * A test {@link io.github.roboblazers7617.buttonbox.Control} that reads the data published by a
+ * {@link io.github.roboblazers7617.buttonbox.controls.TestControl} and outputs it to an
+ * {@link io.github.roboblazers7617.buttonbox.Address}.
  */
 public class PhysicalTestControl extends TestControl {
 	/**

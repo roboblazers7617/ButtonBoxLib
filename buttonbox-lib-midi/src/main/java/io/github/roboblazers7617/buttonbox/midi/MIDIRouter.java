@@ -7,7 +7,8 @@ import javax.sound.midi.Receiver;
 import javax.sound.midi.ShortMessage;
 
 /**
- * {@link Receiver} that routes MIDI messages to the {@link MIDIAddress MIDIAddresses} assigned to it.
+ * {@link Receiver} that routes MIDI messages to the {@link MIDIAddress MIDIAddresses} assigned to
+ * it.
  */
 public class MIDIRouter implements Receiver {
 	/**
@@ -46,7 +47,7 @@ public class MIDIRouter implements Receiver {
 	 * Adds an address to which MIDI messages will be routed to.
 	 *
 	 * @param address
-	 *                The address to add to the MIDIRouter.
+	 *            The address to add to the MIDIRouter.
 	 */
 	public void addAddress(MIDIAddress address) {
 		addresses.add(address);

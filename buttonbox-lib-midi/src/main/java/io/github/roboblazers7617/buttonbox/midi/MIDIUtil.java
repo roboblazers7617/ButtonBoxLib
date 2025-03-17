@@ -15,13 +15,14 @@ public class MIDIUtil {
 	 * Finds a MIDI device by name.
 	 *
 	 * @param rxName
-	 *                The name of the reciever device.
+	 *            The name of the reciever device.
 	 * @param txName
-	 *                The name of the transmitter device.
+	 *            The name of the transmitter device.
 	 * @return
 	 *         The found device, or empty if no device was found.
 	 * @implNote
-	 *           If multiple devices with the same name exist, the one with the highest index will be returned.
+	 *           If multiple devices with the same name exist, the one with the highest index will be
+	 *           returned.
 	 */
 	public static Optional<MIDIDevice> getDeviceByName(String rxName, String txName) {
 		MidiDevice device;
@@ -71,7 +72,7 @@ public class MIDIUtil {
 	 * Finds a MIDI device by name.
 	 *
 	 * @param name
-	 *                The name of the MIDI device.
+	 *            The name of the MIDI device.
 	 * @return
 	 *         The found device, or empty if no device was found.
 	 * @see

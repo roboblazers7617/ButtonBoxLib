@@ -148,7 +148,8 @@ public class MIDIAddress implements DoubleAddress {
 	}
 
 	/**
-	 * Sets the feedback for the address. Not intended to be called outside of the {@link MIDIRouter} class.
+	 * Sets the feedback for the address. Not intended to be called outside of the {@link MIDIRouter}
+	 * class.
 	 *
 	 * @param feedback
 	 *            The feedback value to set [0-127].
@@ -173,7 +174,8 @@ public class MIDIAddress implements DoubleAddress {
 	 * Gets changes to the feedback from the address, and clears the queue of changes.
 	 *
 	 * @return
-	 *         Integers between 0 and 127 containing control feedback changes, ordered from least to most recent.
+	 *         Integers between 0 and 127 containing control feedback changes, ordered from least to
+	 *         most recent.
 	 */
 	public List<Integer> getFeedbackQueueRaw() {
 		ArrayList<Integer> queue = new ArrayList<>(feedbackQueue);
