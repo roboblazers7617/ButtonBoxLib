@@ -76,4 +76,15 @@ public class LEDMulticolor extends LED {
 		colorPub.set(color.toHexString());
 		this.color = color;
 	}
+
+	/**
+	 * Sets the color of the LED from a WPILib {@link edu.wpi.first.wpilibj.util.Color Color}. Published
+	 * to NetworkTables immediately.
+	 *
+	 * @param color
+	 *            The color to set.
+	 */
+	public void setColor(edu.wpi.first.wpilibj.util.Color color) {
+		setColor(new Color(color));
+	}
 }
