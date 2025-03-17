@@ -35,6 +35,16 @@ public class Color {
 	}
 
 	/**
+	 * Creates a new Color from a WPILib {@link edu.wpi.first.wpilibj.util.Color Color}.
+	 *
+	 * @param color
+	 *            The color to pull from.
+	 */
+	public Color(edu.wpi.first.wpilibj.util.Color color) {
+		this(color.red, color.green, color.blue);
+	}
+
+	/**
 	 * Creates a new Color with default values.
 	 */
 	public Color() {
