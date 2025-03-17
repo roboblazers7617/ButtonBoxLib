@@ -4,7 +4,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.StringPublisher;
 import edu.wpi.first.networktables.StringSubscriber;
 import edu.wpi.first.networktables.StringTopic;
-import edu.wpi.first.wpilibj.util.Color;
+import io.github.roboblazers7617.buttonbox.Color;
 
 /**
  * A multicolor indicator LED.
@@ -52,8 +52,7 @@ public class LEDMulticolor extends LED {
 		super.updateClient();
 
 		for (String colorString : colorSub.readQueueValues()) {
-			// TODO: Find a more memory efficient way to do this (don't create new objects every change)
-			color = new Color(colorString);
+			color.setFromString(colorString);
 		}
 	}
 

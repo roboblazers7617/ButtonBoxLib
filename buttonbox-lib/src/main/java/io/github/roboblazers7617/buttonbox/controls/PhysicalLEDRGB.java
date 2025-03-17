@@ -1,5 +1,6 @@
 package io.github.roboblazers7617.buttonbox.controls;
 
+import io.github.roboblazers7617.buttonbox.Color;
 import io.github.roboblazers7617.buttonbox.addresses.DoubleAddress;
 
 /**
@@ -40,8 +41,10 @@ public class PhysicalLEDRGB extends LEDMulticolor {
 
 	@Override
 	public void updateHardware() {
-		redAddress.send(getColor().red);
-		greenAddress.send(getColor().green);
-		blueAddress.send(getColor().blue);
+		Color color = getColor();
+
+		redAddress.send(color.getRed());
+		greenAddress.send(color.getGreen());
+		blueAddress.send(color.getBlue());
 	}
 }
