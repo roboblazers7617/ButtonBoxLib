@@ -41,7 +41,7 @@ public class PhysicalLEDRGB extends LEDMulticolor {
 
 	@Override
 	public void updateHardware() {
-		Color color = getColor();
+		Color color = getColor().scaleBrightness(getBrightness());
 
 		redAddress.send(color.getRed());
 		greenAddress.send(color.getGreen());
