@@ -84,6 +84,28 @@ public class Color {
 	}
 
 	/**
+	 * Copies this Color.
+	 *
+	 * @return
+	 *         A copy of this Color.
+	 */
+	public Color copy() {
+		return new Color(red, green, blue);
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		if (this == other) {
+			return true;
+		}
+		if (other == null) {
+			return false;
+		}
+
+		return other instanceof Color color && Double.compare(color.red, red) == 0 && Double.compare(color.green, green) == 0 && Double.compare(color.blue, blue) == 0;
+	}
+
+	/**
 	 * Sets the color from a hex string.
 	 *
 	 * @param hexString
