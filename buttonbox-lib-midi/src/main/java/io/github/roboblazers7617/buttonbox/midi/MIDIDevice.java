@@ -1,9 +1,9 @@
 package io.github.roboblazers7617.buttonbox.midi;
 
 import javax.sound.midi.MidiDevice;
+import javax.sound.midi.MidiMessage;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
-import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Transmitter;
 
 /**
@@ -60,7 +60,7 @@ public class MIDIDevice {
 	 * @param message
 	 *            The message to send.
 	 */
-	public void send(ShortMessage message) {
+	public void send(MidiMessage message) {
 		receiver.send(message, -1);
 	}
 
