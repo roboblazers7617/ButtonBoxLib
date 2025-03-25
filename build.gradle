@@ -10,6 +10,11 @@ subprojects {
 	apply plugin: 'java'
 	apply plugin: 'com.diffplug.spotless'
 
+	repositories {
+		// Required by Spotless
+		mavenCentral()
+	}
+
 	spotless {
 		java {
 			removeUnusedImports()
