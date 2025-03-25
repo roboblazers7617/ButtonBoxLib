@@ -34,7 +34,7 @@ abstract class ControlContainer {
 	}
 
 	/**
-	 * Creates a new ControlContainer with the default NetworkTableInstance.
+	 * Creates a new ControlContainer with the default {@link NetworkTableInstance}.
 	 */
 	public ControlContainer() {
 		this(NetworkTableInstance.getDefault());

@@ -1,11 +1,29 @@
 package io.github.roboblazers7617.buttonbox;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.RobotBase;
 
 /**
  * Class for robot-side ButtonBox logic.
  */
 public class ButtonBoxServer extends ControlContainer {
+	/**
+	 * Creates a new ButtonBoxServer.
+	 *
+	 * @param inst
+	 *            {@link NetworkTableInstance} to use.
+	 */
+	public ButtonBoxServer(NetworkTableInstance inst) {
+		super(inst);
+	}
+
+	/**
+	 * Creates a new ButtonBoxServer with the default {@link NetworkTableInstance}.
+	 */
+	public ButtonBoxServer() {
+		super();
+	}
+
 	/**
 	 * Updates the states of the controls. Should be called regularly by the server program.
 	 */

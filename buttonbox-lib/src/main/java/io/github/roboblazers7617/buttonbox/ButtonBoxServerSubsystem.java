@@ -2,7 +2,7 @@ package io.github.roboblazers7617.buttonbox;
 
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Subsystem;
-
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.util.sendable.SendableRegistry;
@@ -14,14 +14,24 @@ import edu.wpi.first.util.sendable.SendableRegistry;
 public class ButtonBoxServerSubsystem extends ButtonBoxServer implements Subsystem, Sendable {
 	/**
 	 * Creates a new ButtonBoxServerSubsystem.
+	 *
+	 * @param inst
+	 *            {@link NetworkTableInstance} to use.
 	 */
-	public ButtonBoxServerSubsystem() {
-		super();
+	public ButtonBoxServerSubsystem(NetworkTableInstance inst) {
+		super(inst);
 
 		String name = this.getClass().getSimpleName();
 		name = name.substring(name.lastIndexOf('.') + 1);
 		SendableRegistry.addLW(this, name, name);
 		CommandScheduler.getInstance().registerSubsystem(this);
+	}
+
+	/**
+	 * Creates a new ButtonBoxServerSubsystem with the default {@link NetworkTableInstance}.
+	 */
+	public ButtonBoxServerSubsystem() {
+		this(NetworkTableInstance.getDefault());
 	}
 
 	/**
