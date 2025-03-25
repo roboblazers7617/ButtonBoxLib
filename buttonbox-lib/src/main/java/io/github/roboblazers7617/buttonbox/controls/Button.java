@@ -10,6 +10,10 @@ import edu.wpi.first.networktables.BooleanSubscriber;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 import edu.wpi.first.hal.SimDevice;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.wpi.first.hal.SimBoolean;
 
 /**
@@ -111,37 +115,38 @@ public class Button extends Control {
 
 	@Override
 	public void updateServer() {
-		boolean[] valueQueue = pressedSub.readQueueValues();
+		List<Boolean> valueQueue = new ArrayList<Boolean>();
+		for (boolean value : pressedSub.readQueueValues()) {
+			valueQueue.add(value);
+		}
 
-		if (valueQueue.length == 0) {
-			valueQueue[0] = pressedSim.get();
+		if (valueQueue.size() == 0) {
+			valueQueue.add(pressedSim.get());
 			pressedPub.set(pressedSim.get());
 		}
 
-		if (valueQueue.length > 0) {
-			for (Boolean pressedValue : valueQueue) {
-				pressed = pressedValue;
+		for (Boolean pressedValue : valueQueue) {
+			pressed = pressedValue;
 
-				if (pressed != lastPressed) {
-					if (buttonMode == ButtonMode.TOGGLE_RISING || buttonMode == ButtonMode.TOGGLE_FALLING) {
-						if (lastPressed) {
-							if (buttonMode == ButtonMode.TOGGLE_FALLING) {
-								state = !state;
-							}
-						} else {
-							if (buttonMode == ButtonMode.TOGGLE_RISING) {
-								state = !state;
-							}
+			if (pressed != lastPressed) {
+				if (buttonMode == ButtonMode.TOGGLE_RISING || buttonMode == ButtonMode.TOGGLE_FALLING) {
+					if (lastPressed) {
+						if (buttonMode == ButtonMode.TOGGLE_FALLING) {
+							state = !state;
 						}
-					} else if (buttonMode == ButtonMode.PUSH) {
-						state = pressed;
+					} else {
+						if (buttonMode == ButtonMode.TOGGLE_RISING) {
+							state = !state;
+						}
 					}
-
-					lastPressed = pressed;
+				} else if (buttonMode == ButtonMode.PUSH) {
+					state = pressed;
 				}
 
-				statePub.set(state);
+				lastPressed = pressed;
 			}
+
+			statePub.set(state);
 		}
 
 		pressedSim.set(pressed);
