@@ -1,7 +1,6 @@
 package io.github.roboblazers7617.buttonbox;
 
 import edu.wpi.first.wpilibj.RobotBase;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import java.util.ArrayList;
 
@@ -11,7 +10,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 /**
  * Class for robot-side ButtonBox logic.
  */
-public class ButtonBoxServer extends SubsystemBase {
+public class ButtonBoxServer {
 	/**
 	 * The registered Controls. These are iterated over and updated every call to {@link #periodic()}.
 	 */
@@ -34,7 +33,9 @@ public class ButtonBoxServer extends SubsystemBase {
 		controlTable = table.getSubTable("Controls");
 	}
 
-	@Override
+	/**
+	 * Updates the states of the controls. Should be called regularly by the server program.
+	 */
 	public void periodic() {
 		for (Control control : controls) {
 			control.updateServer();
